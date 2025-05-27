@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  resources :games, only: [:show] do
-    resources :performances, only: [:show]
+  resources :games, only: [:index, :show] do
+    resources :performances, only: [:index, :show, :new, :create]
   end
+  resources :targets, only: [:index, :show, :new, :create]
 end
