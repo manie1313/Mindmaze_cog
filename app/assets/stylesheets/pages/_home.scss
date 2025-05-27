@@ -1,1 +1,21 @@
-// Specific CSS for your home-page
+#home-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.jersey-10-regular {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  font-size: 5rem;
+  text-align: center;
+  padding-top: 120px;
+}
