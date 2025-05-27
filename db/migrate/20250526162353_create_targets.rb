@@ -1,7 +1,7 @@
 class CreateTargets < ActiveRecord::Migration[7.2]
   def change
     create_table :targets do |t|
-      t.float :sleep
+      t.integer :sleep
       t.string :goal
       t.references :user, null: false, foreign_key: true
 
