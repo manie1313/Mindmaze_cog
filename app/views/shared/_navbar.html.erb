@@ -1,11 +1,10 @@
-<nav class="navbar  fixed-top border-bottom border-info bg-body-opacity-25"
+<nav class="navbar fixed-top border-bottom border-info bg-body-opacity-25"
   data-bs-theme="primary" style= "background-color: rgba(0,0,0,0.8)">
   <div class="container-fluid">
-    <a class="navbar-brand">
-       <%= link_to root_path, class: "navbar-brand" do  %>
-          <%= image_tag "maz.png", height: 80%>
-        <% end %>
-    </a>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "logo.png"%>
+  <% end %>
+<%# , height: 80 %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
      aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="color: yellow; border-color: yellow;">
