@@ -1,0 +1,18 @@
+.game-box {
+  display: flex;
+  justify-content: center;
+}
+
+#home-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background: #308a17;
+  background: radial-gradient(circle,#67a516 50%, #112000 100%);
+}
