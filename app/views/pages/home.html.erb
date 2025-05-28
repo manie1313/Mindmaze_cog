@@ -1,6 +1,8 @@
-<div style="background-image", id="home-bg", class="home-bg">
-  <img src="https://res.cloudinary.com/dtyuldook/image/upload/v1748362566/HomeBG_mrqikg.png" alt="">
+<div class="d-flex flex-column justify-content-center align-items-center vh-100 text-center">
+  <h1 class="three-d-text">Welcome to MindMaze</h1>
+  <%= link_to new_user_session_path do %>
+    <h2 class="three-d-text start-hover">Ready to start?</h2>
+  <% end %>
 </div>
-<div>
-  <h1 class="jersey-10-regular">MindMaze</h1>
-</div>
+
+<%= cl_image_tag("HomeBG_mrqikg.jpg", alt: "MindMaze-background", id: "home-bg", class: "home-bg") %>

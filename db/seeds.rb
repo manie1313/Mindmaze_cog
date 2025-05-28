@@ -12,6 +12,7 @@ require "open-uri"
 
 User.destroy_all
 
+
 users_data = [
   {
     username: "diana_di",
@@ -57,3 +58,4 @@ users_data.each do |data|
   user.avatar.attach(io: file, filename: "#{data[:username]}.jpg", content_type: "image/jpg")
   user.save!
 end
+
