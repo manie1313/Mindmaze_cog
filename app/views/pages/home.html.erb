@@ -1,4 +1,7 @@
-<div class="d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex flex-column justify-content-center align-items-center vh-100 text-center">
   <h1 class="three-d-text">Welcome to MindMaze</h1>
+  <%= link_to new_user_session_path do %>
+    <h2 class="three-d-text">Ready to start?</h2>
+  <% end %>
 </div>
 <%= cl_image_tag("HomeBG_mrqikg.jpg", alt: "MindMaze-background", id: "home-bg", class: "home-bg") %>
