@@ -8,6 +8,10 @@
 // legend ~ div.form-check:first-of-type {
 //   clear: left;
 // }
+.my-page-wrapper {
+  background: rgb(245, 243, 243);
+}
+
 .centered-form-wrapper {
   min-height: calc(100vh - 64px);
   display: flex;
@@ -17,12 +21,13 @@
 }
 
 .form-container {
-  max-width: 640px; 
+  max-width: 640px;
   width: 100%;
   background-color: white;
   border-radius: 0.5rem;
   padding: 3rem 2.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
 .typewriter {

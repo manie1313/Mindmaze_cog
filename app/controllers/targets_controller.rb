@@ -9,7 +9,7 @@ class TargetsController < ApplicationController
     @target.user = current_user
 
     if @target.save
-      redirect_to performances_path(current_user.performances), notice: "Target saved successfully."
+      redirect_to my_profile_path, notice: "Target saved successfully."
     else
       render :new, status: :unprocessable_entity
     end
