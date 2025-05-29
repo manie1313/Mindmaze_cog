@@ -4,7 +4,7 @@ class PerformancesController < ApplicationController
   end
 
   def show
-    raise
+    # raise
     @performance = Performance.find(params[:game_id])
   end
 end

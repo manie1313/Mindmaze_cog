@@ -1,0 +1,13 @@
+.form-submit-button {
+  background-color: #f59e0b; // Tailwind's orange-500
+  color: white;
+  padding: 0.75rem; // Equivalent to py-3
+  border-radius: 9999px; // Fully rounded
+  font-size: 1.125rem; // text-lg
+  font-weight: 600; // font-semibold
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e28307; // Tailwind's orange-600
+  }
+}
