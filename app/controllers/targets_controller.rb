@@ -5,9 +5,11 @@ class TargetsController < ApplicationController
   end
 
   def create
-    @target = current_user.targets.new(target_params)
+    @target = Target.new(target_params)
+    @target.user = current_user
+
     if @target.save
-      redirect_to @target, notice: "Target saved successfully."
+      redirect_to performances_path(current_user.performances), notice: "Target saved successfully."
     else
       render :new, status: :unprocessable_entity
     end
