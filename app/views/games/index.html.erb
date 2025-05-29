@@ -1,10 +1,23 @@
 <div style="background-image "id="home-bg">
 </div>
 
-<div class="container game-container">
-  <div class="game-box">
-    <iframe width="700" height="700" frameborder="0" src="https://www.educaplay.com/game/24040673-shapes_matching_game.html"></iframe>
-  </div>
+<div class="mt-4">
+  <h1>Games!</h1>
+
+<div class="container">
+  <div class="cards">
+    <% @games.each do |game| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= game.image_url %>)">
+        <h2 class="my-font" style="transform: translateY(50%);"><%= game.name %></h2>
+        <h2><%= link_to "", games_path, id: "games-index-btn", class: "play-btn", style: "transform: translateY(-65%);" %></h2>
+    </div>
+    <% end %>
+</div>
 </div>
 
-
+  <%# <div class="container game-container">
+    <div class="game-box">
+      <iframe width="700" height="700" frameborder="0" src="https://www.educaplay.com/game/24040673-shapes_matching_game.html"></iframe>
+    </div>
+  </div>
+</div> %>
