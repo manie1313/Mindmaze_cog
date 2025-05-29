@@ -30,9 +30,7 @@
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                Menu
-              </a>
+               <%= link_to "Home", root_path, class: "dropdown-item" %>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
