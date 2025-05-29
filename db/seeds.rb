@@ -68,7 +68,8 @@ Game.create!(
   name: "Shape Match",
   category: "Matching",
   description: "Match various shapes with their descriptions or related concepts!",
-  embed_link: "https://www.educaplay.com/learning-resources/24040673-shapes_matching_game.html"
+  embed_link: "https://www.educaplay.com/learning-resources/24040673-shapes_matching_game.html",
+  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748533834/actividadRELACIONAR_COLUMNAS_odsd22.webp"
 )
 
 Game.create!(
@@ -76,7 +77,8 @@ Game.create!(
   name: "Elemental Quest",
   category: "Matching",
   description: "Explore the world of chemical elements and master their properties in this engaging educational game!",
-  embed_link: "https://www.educaplay.com/learning-resources/24058394-elemental_quest.html"
+  embed_link: "https://www.educaplay.com/learning-resources/24058394-elemental_quest.html",
+  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748533852/actividadRELACIONAR_jxlc3l.webp"
 )
 
 Game.create!(
@@ -84,6 +86,7 @@ Game.create!(
   name: "Shape Memory",
   category: "Memory",
   description: "Find the same matching shapes before times runs out.",
-  embed_link: "https://www.educaplay.com/learning-resources/24058913-shape_memory.html"
+  embed_link: "https://www.educaplay.com/learning-resources/24058913-shape_memory.html",
+  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748533865/actividadRELACIONAR_MOSAICO_rkucv4.webp"
 )
  puts "#{Game.count}"
