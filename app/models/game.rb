@@ -5,6 +5,6 @@ class Game < ApplicationRecord
   validates :mode, presence: true
   validates :name, presence: true
   validates :category, presence: true
-  validates :url, presence: true
+  validates :embed_link, presence: true
   validates :description, presence: true
 end
