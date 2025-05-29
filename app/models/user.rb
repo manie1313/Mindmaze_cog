@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   has_many :performances
-  has_many :targets
+  has_many :targets, dependent: :destroy
   has_many :games, through: :performances
   has_one_attached :avatar
 
