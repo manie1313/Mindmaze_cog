@@ -1,0 +1,29 @@
+.auth-page {
+  a {
+  text-decoration: none !important;
+  color: grey;
+  font-size:12px;
+  display: inline-block;
+  }
+
+  a:hover {
+    color: #FFCB5B;
+  }
+
+  .button {
+    background-color: #FFCB5B;
+    border-radius: 8px;
+    text-align: center;
+    transition-duration: .25s;
+  }
+
+  .button:hover {
+    box-shadow: inset 2px 2px 6px rgb(121, 121, 121);
+    transition-duration: .25s;
+  }
+
+  .card{
+    border-radius: 10px;
+    box-shadow: 0px 0px 60px #FFCB5B;
+  }
+}
