@@ -1,15 +1,29 @@
 <div class="position-relative vh-100 text-center">
+  <%# <audio
+    id="aot-sound"
+    preload="auto">
+    <source
+    src="https://www.myinstants.com/media/sounds/attack-on-titan-opening.mp3"
+    type="audio/mpeg">
+  </audio> %>
+  <%# <%= audio_tag "eren_roar.mp3", id: "eren-scream", preload: "auto" %>
+  <%# ? %>
+ <div class="position-relative vh-100 text-center">
+  <%= audio_tag("https://res.cloudinary.com/dtyuldook/raw/upload/v1748601741/eren_roar.mp3",
+               id: "eren-scream",
+               preload: "auto") %>
 
   <div class="position-absolute top-0 start-50 translate-middle-x mt-4">
     <h1 class="three-d-text">Welcome to MindMaze</h1>
   </div>
 
   <div class="d-flex flex-column justify-content-center align-items-center h-100">
-    <%= link_to new_user_session_path do %>
+    <%= link_to new_user_session_path, id: "start-link" do %>
       <h2 class="three-d-text start-hover">Ready to start?</h2>
     <% end %>
   </div>
 
 </div>
+
 <%# <%= cl_image_tag("HomeBG_mrqikg.jpg", alt: "MindMaze-background", id: "home-bg", class: "home-bg") %>
 <img src="https://res.cloudinary.com/dtyuldook/image/upload/v1748362566/HomeBG_mrqikg.png" class="home-bg" id="home-bg">
