@@ -2,7 +2,7 @@ document.addEventListener("turbo:load", function() {
   const startLink = document.getElementById("start-link");
   const scream = document.getElementById("eren-scream");
 
-  scream.volume = 0.5;
+  scream.volume = 0.1;
 
   startLink.addEventListener(
     "click",
