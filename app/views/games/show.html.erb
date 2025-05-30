@@ -3,13 +3,14 @@
 
 <% url = @game.embed_link %>
 
- <div class="container game-container">
+ <div class="container game-container" data-controller="game">
     <div class="game-box">
-      <iframe width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
+      <iframe sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
     </div>
   </div>
+  <button data-action="click->game#getScore">Score</button>
 </div>
 
-<div>
-  <h2>Score: </h2>
-</div>
+
+
+<%# class="_scoreValue_1myzb_92" %>
