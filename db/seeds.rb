@@ -12,7 +12,6 @@ require "open-uri"
 
 User.destroy_all
 
-
 users_data = [
   {
     username: "diana_di",
