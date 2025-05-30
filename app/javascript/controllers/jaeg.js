@@ -4,7 +4,10 @@ document.addEventListener("turbo:load", function() {
 
   scream.volume = 0.5;
 
-  startLink.addEventListener("click", (event) => {
+  startLink.addEventListener(
+    "click",
+    (event) =>
+      {
     event.preventDefault();
     console.log("YAREEEEEEEEEEEEEEDAZEEEEEEEEEE");
 
@@ -14,6 +17,11 @@ document.addEventListener("turbo:load", function() {
         setTimeout(() => {
           window.location.href = startLink.href;
         }, 5000);
-      })
-  });
-});
+      }
+    )
+  }
+)
+;
+}
+)
+;
