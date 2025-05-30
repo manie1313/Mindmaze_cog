@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
   resources :targets, only: %i[index new create show]
   get "my_profile", to: "profiles#my_profile"
+  resources :performances, only: [:index]
 end
