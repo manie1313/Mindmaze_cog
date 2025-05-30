@@ -9,14 +9,16 @@
         </header>
 
         <div class="p-10 pt-5">
-          <h2 class="typewriter text-2xl font-bold text-gray-800">Time to fine-tune your mind for today!</h2>
+          <h2 class="typewriter text-2xl font-bold text-gray-800">
+            Time to fine-tune your mind for today!
+          </h2>
           <div class="mt-10 pt-5">
             <%= simple_form_for(@target, html: { class: "space-y-6" }) do |f| %>
               <div class="text-left">
                 <label class="block text-lg font-semibold text-gray-800 mb-2" for="sleep_input">
                   <span class="inline-flex items-center gap-2">
                     <span class="h-7 w-7 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-sm font-bold">💤</span>
-                    How much do you typically sleep per night?
+                    How many hours of sleep did you get last night?
                   </span>
                 </label>
                 <%= f.input :sleep, placeholder: 'e.g. 7.5 hours', label: false, input_html: { id: "sleep_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-green-400 focus:border-transparent" } %>

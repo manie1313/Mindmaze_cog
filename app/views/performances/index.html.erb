@@ -1,0 +1,18 @@
+<div class="page-wrapper">
+  <div class="targets-performances-container">
+    <h2 class="typewriter text-2xl font-bold text-gray-800">Your Daily Targets</h2>
+    <% if @targets.any? %>
+      <ul>
+        <% @targets.each do |target| %>
+          <li>
+            Sleep: <%= target.sleep %> hrs — Goal: <%= target.goal %><br>
+            <small class="text-gray-500">Created on: <%= target.created_at.strftime("%B %d, %Y") %></small>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You haven't set any targets yet.</p>
+    <% end %>
+    <%= link_to "Set New Targets", new_target_path, class: "set-targets-button" %>
+  </div>
+</div>
