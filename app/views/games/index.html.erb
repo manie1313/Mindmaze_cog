@@ -2,15 +2,20 @@
 </div>
 
 <div class="mt-4" style="text-align: center;">
-  <h1 class="my-font">Games!</h1>
+    <h1 class="my-font">Games!</h1>
 
-<div class="container">
-  <div class="cards">
-    <% @games.each do |game| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= game.image_url %>)">
-          <h2 class="my-font" style="transform: translateY(50%);"><%= game.name %></h2>
-          <h2><%= link_to "", game_path(game), id: "games-index-btn", class: "play-btn", style: "transform: translateY(-65%);" %></h2>
-      </div>
-    <% end %>
+  <div class="container">
+    <div class="cards">
+      <% @games.each do |game| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= game.image_url %>)">
+            <h2 class="my-font" style="transform: translateY(50%);">
+              <%= game.name %>
+            </h2>
+            <h2>
+              <%= link_to "", game_path(game), id: "games-index-btn", class: "play-btn", style: "transform: translateY(-65%);" %>
+            </h2>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
