@@ -1,0 +1,41 @@
+<div class="my-page-wrapper">
+  <div class="centered-form-wrapper">
+    <div class="flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      <div class="form-container text-center">
+        <header class="bg-white border-b py-6">
+          <div class="flex justify-center">
+            <%= image_tag("brain-form.svg", alt: "Brain icon", width: 120, height: 120, class: "mx-auto") %>
+          </div>
+        </header>
+
+        <div class="p-10 pt-5">
+          <h2 class="typewriter text-2xl font-bold text-gray-800">Time to fine-tune your mind for today!</h2>
+          <div class="mt-10 pt-5">
+            <%= simple_form_for(@target, html: { class: "space-y-6" }) do |f| %>
+              <div class="text-left">
+                <label class="block text-lg font-semibold text-gray-800 mb-2" for="sleep_input">
+                  <span class="inline-flex items-center gap-2">
+                    <span class="h-7 w-7 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-sm font-bold">💤</span>
+                    How much do you typically sleep per night?
+                  </span>
+                </label>
+                <%= f.input :sleep, placeholder: 'e.g. 7.5 hours', label: false, input_html: { id: "sleep_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-green-400 focus:border-transparent" } %>
+              </div>
+              <div class="text-left mt-6 pt-2">
+                <label class="block text-lg font-semibold text-gray-800 mb-2" for="goal_input">
+                  <span class="inline-flex items-center gap-2">
+                    <span class="h-7 w-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">🎯</span>
+                    What do you want to achieve with your brain power?
+                  </span>
+                </label>
+                <%= f.input :goal, placeholder: "e.g. Improve focus, boost memory, reduce stress", label: false, input_html: { id: "goal_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-blue-400 focus:border-transparent" } %>
+              </div>
+
+              <%= f.button :submit, "Save daily goals", class: "form-submit-button mt-8 w-full" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

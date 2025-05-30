@@ -2,9 +2,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   has_many :performances
-  has_many :targets
+  has_many :targets, dependent: :destroy
   has_many :games, through: :performances
-  has_one_attached :avatar
 
   validates :username, length: { in: 2..10 }
   validates :username, uniqueness: true

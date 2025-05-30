@@ -1,10 +1,9 @@
-<nav class="navbar fixed-top border-bottom border-info bg-body-opacity-25"
+<nav class="navbar sticky-top border-bottom border-info bg-body-opacity-25"
   data-bs-theme="primary" style= "background-color: rgba(0,0,0,0.8)">
   <div class="container-fluid">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png"%>
   <% end %>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
      aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="color: yellow; border-color: yellow;">
       <span class="navbar-toggler-icon" style="filter: invert(100%) sepia(100%) saturate(10000%) hue-rotate(0deg);">
@@ -16,20 +15,26 @@
         <% if user_signed_in? %>
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Hello <%= current_user.username %>!
           </h5>
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, class: "avatar-square" %>
+          <% else %>
+            <%= image_tag "avatar.png", class: "avatar-square" %>
+          <% end %>
         <% else %>
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Welcome!</h5>
         <% end %>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+        <button type="button"  class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
         </button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Menu</a>
+               <%= link_to "Home", root_path, class: "dropdown-item" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Games
+              <a class="nav-link" href="#">
+                Games
               </a>
             </li>
             <li class="nav-item dropdown">
@@ -37,14 +42,24 @@
                 Dashboard
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Targets</a>
+                <li>
+                  <%= link_to "My Profile", my_profile_path, class: "dropdown-item" %>
                 </li>
-                <li><a class="dropdown-item" href="#">Performances</a>
+                <li>
+                  <%= link_to "Targets", new_target_path, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Performances
+                  </a>
                 </li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Multiplayer</a>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Multiplayer
+                  </a>
                 </li>
               </ul>
               <li>
@@ -67,7 +82,8 @@
         <% end %>
           <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Search
+            <button class="btn btn-outline-success" type="submit">
+              Search
             </button>
           </form>
       </div>
