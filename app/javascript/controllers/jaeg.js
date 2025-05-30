@@ -16,7 +16,7 @@ document.addEventListener("turbo:load", function() {
       .then(() => {
         setTimeout(() => {
           window.location.href = startLink.href;
-        }, 5000);
+        }, 3000);
       }
     )
   }
