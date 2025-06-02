@@ -1,13 +1,54 @@
 .form-submit-button {
-  background-color: #f59e0b; // Tailwind's orange-500
+  background-color: #f59e0b;
   color: white;
-  padding: 0.75rem; // Equivalent to py-3
-  border-radius: 9999px; // Fully rounded
-  font-size: 1.125rem; // text-lg
-  font-weight: 600; // font-semibold
+  padding: 0.75rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-weight: 600;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #e28307; // Tailwind's orange-600
+    background-color: #e28307;
   }
+}
+
+.btn-start {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  background: #36db27;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease,
+  background-color 0.3s ease;
+  animation: shake 0.6s infinite;
+}
+
+.btn-start:hover {
+  background: #309727;
+  transform: scale(1.05);
+  animation: highlight 0.6s ease-in-out forwards;
+}
+
+@keyframes highlight {
+  0% {
+    box-shadow: 0 0 0px #38eb38;
+  }
+  50% {
+    box-shadow: 0 0 20px #259234;
+  }
+  100% {
+    box-shadow: 0 0 0px #094409;
+  }
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-3px); }
+  50%  { transform: translateX(3px); }
+  75%  { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
 }
