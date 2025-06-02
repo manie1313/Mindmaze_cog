@@ -5,12 +5,21 @@
 
  <div class="container game-container" data-controller="game">
     <div class="game-box">
-      <iframe sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
+      <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
     </div>
   </div>
   <button data-action="click->game#getScore">Score</button>
 </div>
 
+<div id="score-display" style="margin-top 20px;">Score: 0</div>
 
+<script>
+  window.addEventListener("message", function(event) {
+    // Optional: limit to same origin
+    if (event.origin !== window.location.origin) return;
 
-<%# class="_scoreValue_1myzb_92" %>
+    if (event.data.type === "score") {
+      document.getElementById("score-display").textContent = "Score: " + event.data.value;
+    }
+  });
+</script>
