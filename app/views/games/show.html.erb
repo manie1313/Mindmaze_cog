@@ -1,15 +1,18 @@
 <div style="background-image "id="home-bg">
 </div>
 
+<p>
+  <%= @game.content %>
+</p>
+
 <% url = @game.embed_link %>
 
  <div class="container game-container" data-controller="game">
     <div class="game-box">
       <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
     </div>
+    <button data-action="click->game#getScore">Score</button>
   </div>
-  <button data-action="click->game#getScore">Score</button>
-</div>
 
 <div id="score-display" style="margin-top 20px;">Score: 0</div>
 
