@@ -67,22 +67,4 @@
     line-height: 1.6;
     margin-top: 20px;
   }
-
-  .set-targets-button {
-    background-color: #ffb800;
-    color: #fff;
-    text-decoration: none;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 30px;
-
-    &:hover {
-      background-color: #e6a700;
-    }
-  }
 }
