@@ -1,5 +1,6 @@
 class Target < ApplicationRecord
   belongs_to :user
+  has_many :performances, through: :user
 
   validates :sleep, presence: true
   validates :sleep, numericality: { only_integer: true }
