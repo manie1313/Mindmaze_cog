@@ -25,11 +25,7 @@
   </div>
 
   <div class="d-flex flex-column justify-content-center align-items-center h-100">
-    <%= link_to new_target_path, id: "start-link" do %>
-      <h2 class="three-d-text start-hover">
-        Ready to start?
-      </h2>
-    <% end %>
+    <%= link_to "Start", new_target_path, id: "start-link", class: "btn btn-start" %>
   </div>
 </div>
 
