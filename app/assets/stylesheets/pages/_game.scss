@@ -107,7 +107,7 @@
   background: radial-gradient(circle,#67a516 50%, #112000 100%);
 }
 
-#game-card-category {
+.game-card-category {
   background-size: cover;
   background-position: center;
   height: 384px;
@@ -130,7 +130,7 @@
   font-size: 48px;
 }
 
-#game-cards {
+.game-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;

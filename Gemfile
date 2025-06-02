@@ -41,6 +41,9 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "devise"
 gem "cloudinary"
+gem "ruby-openai"
+gem "solid_cache"
+gem "solid_queue"
 
 group :development, :test do
   gem "dotenv-rails"
