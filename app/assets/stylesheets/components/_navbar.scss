@@ -1,12 +1,67 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+// .navbar {
+//   justify-content: space-between;
+//   background: white;
+// }
+
+
+
+// .navbar .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar .navbar-brand img {
+//   width: 90px;
+// }
+
+.navbar .navbar-brand img {
+  width: 90px;
+  height: auto;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+
+.nav-link {
+  color: rgb(231, 239, 77);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: rgba(79, 237, 35, 0.8);
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: rgb(231, 239, 77);
+
+  &:hover {
+    color: rgba(79, 237, 35, 0.8);
+  }
 }
+
+
+.offcanvas {
+  background-color: rgba(0,0,0,0.8);
+  color: rgb(231, 239, 77);
+
+  .dropdown-menu {
+    background-color: rgba(232, 242, 41, 0.6);
+
+    .dropdown-item {
+      color: black;
+
+      &:hover {
+        color: black !important;
+        background-color: rgba(244, 244, 234, 0.2);
+      }
+    }
+  }
+
+  .btn-outline-success {
+    color: rgb(231, 239, 77);
+    border-color: rgb(231, 239, 77);
+
+    &:hover {
+      color: #000;
+      background-color: rgba(79, 237, 35, 0.8);
+    }
+  }
+ }

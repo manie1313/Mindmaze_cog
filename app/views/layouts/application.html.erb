@@ -3,6 +3,7 @@
   <head>
     <title><%= content_for(:title) || "Mind Maze" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -21,11 +22,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&family=Jersey+10&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
+  <body class= "d-flex flex-column min-vh-100">
+      <%= render "shared/navbar" %>
+    <div class="flex-grow-1">
+       <%= yield %>
+    </div>
+    <div>
+      <%= render "shared/flashes" %>
+      <%= render "shared/footer" %>
+    </div>
   </body>
 </html>

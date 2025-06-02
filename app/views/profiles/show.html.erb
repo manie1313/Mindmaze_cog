@@ -1,0 +1,52 @@
+<div class="profile-background">
+  <div class="bg-overlay">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-center mb-4 mb-md-0">
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar,
+            class: "img-fluid rounded-circle avatar-profile mb-3",
+            alt: "User Avatar" %>
+          <% else %>
+            <%= image_tag "default_avatar.png",
+            class: "img-fluid rounded-circle avatar-profile mb-3",
+              alt: "Default Avatar" %>
+          <% end %>
+          <h2 class="username-display">
+            <%= @user.username %>
+          </h2>
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="card shadow-sm">
+            <div class="card-body">
+
+              <h3 class="mb-4">
+                Profile Information
+              </h3>
+              <p>
+                <strong>
+                  UserName:
+                </strong>
+                <%= @user.username %>
+              </p>
+              <p>
+                <strong>
+                  Age:
+                </strong>
+                <%= @user.age %></p>
+              <p>
+                <strong>
+                  Email:
+                  </strong>
+                  <%= @user.email %>
+              </p>
+
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary mt-3" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
+  </div>
+</div>

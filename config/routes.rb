@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resources :games, only: %i[index show] do
-    resources :performances, only: %i[index show new create]
+    resources :performances, only: %i[new create show]
   end
-  resources :targets, only: %i[index show new create]
+  resources :targets, only: %i[index new create show]
+  get "my_profile", to: "profiles#my_profile"
+  resources :performances, only: [:index]
 end
