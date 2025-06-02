@@ -64,28 +64,28 @@ Game.destroy_all
 
 Game.create!(
   mode: "single player",
-  name: "Shape Match",
+  name: "2048",
   category: "Matching",
-  description: "Match various shapes with their descriptions or related concepts!",
-  embed_link: "https://www.educaplay.com/learning-resources/24040673-shapes_matching_game.html",
-  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748533834/actividadRELACIONAR_COLUMNAS_odsd22.webp"
+  description: "2048 is a simple yet addictive sliding puzzle game where the goal is to combine numbered tiles on a grid to reach the number 2048. Players use arrow keys to slide tiles in four directions. When two tiles with the same number touch, they merge into one — doubling in value. The game ends when no more moves are possible or when the 2048 tile is created.",
+  embed_link: "/games/2048/index.html",
+  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748864553/2048_logo_v8gakh.svg"
 )
 
 Game.create!(
   mode: "single player",
-  name: "Elemental Quest",
-  category: "Matching",
-  description: "Explore the world of chemical elements and master their properties in this engaging educational game!",
-  embed_link: "https://www.educaplay.com/learning-resources/24058394-elemental_quest.html",
-  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748533852/actividadRELACIONAR_jxlc3l.webp"
+  name: "Hextris",
+  category: "Reaction Based",
+  description: "Hextris is a fast-paced puzzle game inspired by Tetris, where colored hexagonal blocks fall around a central hexagon. Players rotate the hexagon to align matching colors; when three or more blocks of the same color touch, they disappear. The game speeds up over time, challenging your reflexes and strategy.",
+  embed_link: "/games/hextris/index.html",
+  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748864662/0jCMd4dIANQ9QD3Q1r0y7-ZnpVb74dMHHtsz9-qPFDSRHRVvg-Q3ENsaCOabUsvsz7Q_o3tprc.png"
 )
 
 Game.create!(
   mode: "Single player",
-  name: "Shape Memory",
-  category: "Memory",
-  description: "Find the same matching shapes before times runs out.",
-  embed_link: "https://www.educaplay.com/learning-resources/24058913-shape_memory.html",
-  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748533865/actividadRELACIONAR_MOSAICO_rkucv4.webp"
+  name: "ohh1",
+  category: "Logic",
+  description: "Oh h1 is a logic-based puzzle game where players fill a grid with red and blue tiles according to three rules: no more than two of the same color in a row, equal numbers of each color in every row and column, and no identical rows or columns. The challenge increases with grid size, making it a test of pattern recognition and deduction.",
+  embed_link: "/games/ohh1/index.html",
+  image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748864737/LYnyOCfAUobaPRm262hjhvNg9eE14sPj5H6CFiUxjktt7R0QZX5kLbE7LDEgxm6brwg_ci1jbn.png"
 )
  puts "#{Game.count}"
