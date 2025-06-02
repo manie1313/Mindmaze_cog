@@ -1,19 +1,22 @@
 <div class="profile-background">
   <div class="page-wrapper">
     <div class="targets-performances-container">
-      <h2 class="typewriter text-2xl font-bold text-gray-800">Your Daily Targets</h2>
-      <% if @targets.any? %>
-        <ul>
-          <% @targets.each do |target| %>
-            <li>
-              Sleep: <%= target.sleep %> hrs — Goal: <%= target.goal %><br>
-              <small class="text-gray-500">Created on: <%= target.created_at.strftime("%B %d, %Y") %></small>
-            </li>
-          <% end %>
-        </ul>
+      <h2 class="typewriter text-2xl font-bold text-gray-800">Your Daily Summary</h2>
+
+      <% if @today_target %>
+        <p><strong>Sleep:</strong> <%= @today_target.sleep %> hrs</p>
+        <p><strong>Goal:</strong> <%= @today_target.goal %></p>
       <% else %>
-        <p>You haven't set any targets yet.</p>
+        <p>No target set today.</p>
+      <% end %>
+
+      <% if @today_performance %>
+        <p><strong>Game Accuracy:</strong> <%= @today_performance.accuracy %>%</p>
+        <p><strong>Completed:</strong> <%= @today_performance.completed ? "Yes" : "No" %></p>
+      <% else %>
+        <p>No game performance recorded today.</p>
       <% end %>
     </div>
   </div>
+  <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
 </div>
