@@ -1,12 +1,6 @@
 class TargetsController < ApplicationController
   before_action :authenticate_user!
 
-  GAME_MAP = {
-    "Improve focus" => 4,
-    "Boost memory" => 5,
-    "Reduce Stress" => 6
-  }
-
   def new
     @target = Target.new
   end
@@ -14,8 +8,8 @@ class TargetsController < ApplicationController
   def create
     @target = current_user.targets.new(target_params)
 
-    if @target.save && (game_id = GAME_MAP[params[:commit]])
-      redirect_to game_path(game_id), notice: "Target saved! Ready to play."
+    if @target.save && (game = matched_game)
+      redirect_to game_path(game), notice: "Target saved! Ready to play."
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,5 +19,15 @@ class TargetsController < ApplicationController
 
   def target_params
     params.require(:target).permit(:sleep, :goal)
+  end
+
+  def matched_game
+    game_name = {
+      "Improve focus" => "Hextris",
+      "Boost memory" => "ohh1",
+      "Reduce Stress" => "2048"
+    }[params[:commit]]
+
+    Game.find_by(name: game_name)
   end
 end
