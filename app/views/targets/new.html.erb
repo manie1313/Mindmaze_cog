@@ -24,6 +24,8 @@
               </label>
               <%= f.input :sleep, placeholder: 'e.g. 7.5 hours', label: false, input_html: { id: "sleep_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-green-400 focus:border-transparent" } %>
             </div>
+
+
             <div class="text-left mt-6 pt-2">
               <label class="block text-lg font-semibold text-gray-800 mb-6">
                 <span class="inline-flex items-center gap-2">
@@ -32,9 +34,13 @@
                 </span>
               </label>
            <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
-            <%= f.submit "Improve focus", name: "commit", value: "Improve focus", class: "form-submit-button px-6 py-3" %>
-            <%= f.submit "Boost memory", name: "commit", value: "Boost memory", class: "form-submit-button2 px-6 py-3" %>
-            <%= f.submit "Reduce Stress", name: "commit", value: "Reduce Stress", class: "form-submit-button3 px-6 py-3" %>
+            <%# <%= f.submit "Improve focus", name: "commit", value: "Improve focus", class: "form-submit-button px-6 py-3" %>
+            <%= f.button :button, name: "commit", value: "" , class: "form-submit-button", type: "submit" do %>
+              <%= hidden_field_tag :goal_id, 1 %>
+              Improve focus
+            <% end %>
+            <%= f.submit "Boost memory", name: "commit", value: "", class: "form-submit-button2 px-6 py-3" %>
+            <%= f.submit "Reduce Stress", name: "commit", value: 3, class: "form-submit-button3 px-6 py-3" %>
            </div>
             </div>
           <% end %>

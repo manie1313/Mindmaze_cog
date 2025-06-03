@@ -1,4 +1,4 @@
-<div style="background-image "id="home-bg">
+<%# <div style="background-image "id="home-bg">
 </div>
 
 <div class="mt-4" style="text-align: center;">
@@ -8,15 +8,48 @@
   <div class="container">
     <div class="game-cards">
       <% @games.each do |game| %>
-        <div class="game-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= game.image_url %>)">
-            <h2 class="my-font" style="transform: translateY(50%);">
+        <%# <div class="game-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= game.image_url %>)">
+            <%# <h2 class="my-font" style="transform: translateY(50%);">
               <%= game.name %>
-            </h2>
+            <%# </h2>
             <h2>
               <%= link_to "", game_path(game), id: "games-index-btn", class: "play-btn", style: "transform: translateY(-65%);" %>
-            </h2>
+            <%# </h2>
         </div>
       <% end %>
-    </div>
+    <%# </div>
+  </div>
+</div> %>
+
+<div style="background-image "id="home-bg">
+</div>
+
+<div class="mt-10 text-center">
+  <h1 class="my-font text-4xl font-bold mb-2">Games for: <%= @goal.name %></h1>
+  <%# <p class="text-gray-600 text-lg mb-8">Improve your <%= @goal.name.downcase %> </p> 
+
+  <div class="container mx-auto px-4">
+    <% if @games.any? %>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% @games.each do |game| %>
+          <div class="game-card-category rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+               style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= game.image_url %>'); background-size: cover; background-position: center; height: 300px; position: relative;">
+
+            <div class="absolute bottom-4 left-0 right-0 text-center">
+              <h2 class="text-white text-2xl font-semibold mb-2 my-font">
+                <%= game.name %>
+              </h2>
+              <%= link_to "Play", game_path(game), class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-gray-700 text-xl mt-10">No games found for this goal yet 🥲. </p>
+    <% end %>
+  </div>
+
+  <div class="mt-12">
+    <%= link_to "← Back to Dashboard", root_path, class: "text-blue-600 hover:underline text-lg" %>
   </div>
 </div>
