@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_141627) do
 
   create_table "games", force: :cascade do |t|
     t.string "mode"
+    t.bigint "goal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -52,6 +53,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_141627) do
     t.string "embed_link"
     t.string "image_url"
     t.text "content"
+    t.index ["goal_id"], name: "index_games_on_goal_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "performances", force: :cascade do |t|
@@ -59,12 +67,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_141627) do
     t.decimal "accuracy"
     t.time "time"
     t.boolean "completed"
-    t.bigint "user_id", null: false
+    t.bigint "target_id", null: false
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_performances_on_game_id"
-    t.index ["user_id"], name: "index_performances_on_user_id"
+    t.index ["target_id"], name: "index_performances_on_target_id"
   end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
@@ -192,8 +200,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_141627) do
     t.integer "sleep"
     t.string "goal"
     t.bigint "user_id", null: false
+    t.bigint "goal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_targets_on_goal_id"
     t.index ["user_id"], name: "index_targets_on_user_id"
   end
 
@@ -215,13 +225,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_141627) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "games", "goals"
   add_foreign_key "performances", "games"
-  add_foreign_key "performances", "users"
+  add_foreign_key "performances", "targets"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "targets", "goals"
   add_foreign_key "targets", "users"
 end

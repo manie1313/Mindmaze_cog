@@ -2,7 +2,8 @@ class Game < ApplicationRecord
   after_save :set_content, if: -> { saved_change_to_name? || saved_change_to_category? || saved_change_to_description? }
 
   has_many :performances, dependent: :destroy
-  has_many :users, through: :performances
+  # has_many :users, through: :performances
+  belongs_to :goal
   validates :mode, presence: true
   validates :name, presence: true
   validates :category, presence: true

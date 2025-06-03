@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :targets, only: %i[index new create show] do
     # resources :goals, only: %i[new create] ==>seed file
     resources :performances, only: %i[index show]
-    resources :games, only: %i[index]
+    resources :games, only: %i[show index]
   end
 
   resources :games, only: %i[show]

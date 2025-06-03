@@ -1,6 +1,8 @@
 class Target < ApplicationRecord
   belongs_to :user
-  has_many :performances, through: :user
+  belongs_to :goal
+  has_many :performances
+  has_many :games, through: :performances
 
   validates :sleep, presence: true
   validates :sleep, numericality: { only_integer: true }
