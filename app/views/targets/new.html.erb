@@ -33,7 +33,7 @@
               </label>
               <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
                 <% Goal.all.each_with_index do |goal, index| %>
-                  <%= f.submit goal.name, name: "commit", value: goal.name, class: : "form-submit-button<%= index == 1 ? '2' : index == 2 ? '3' '' %> px-6 py-3" %>
+                  <%= f.submit goal.name, name: "commit", value: goal.name, class: "form-submit-button#{index + 1} px-6 py-3" %>
                 <% end %>
               </div>
             </div>
