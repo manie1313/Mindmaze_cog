@@ -1,0 +1,14 @@
+<div class="profile-background">
+  <div class="page-wrapper">
+    <div class="targets-performances-container">
+      <h2 class="typewriter text-2xl font-bold text-gray-800">Your Daily Summary</h2>
+      <%= simple_form_for [@target, @performance] do |f| %>
+        <%= f.input :description %>
+        <%= f.input :accuracy %>
+        <%= f.input :time %>
+        <%= f.submit "Submit Performance", class: "form-submit-button" %>
+      <% end %>
+    </div>
+  </div>
+  <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
+</div>
