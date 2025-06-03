@@ -11,7 +11,7 @@ class TargetsController < ApplicationController
     @target.goal = @goal
 
     if @target.save! && (game = Game.find_by(category: params[:commit]))
-      redirect_to game_path(game), notice: "Target saved! Ready to play."
+      redirect_to target_game_path(@target, game), notice: "Target saved! Ready to play."
     else
       render :new, status: :unprocessable_entity
     end
