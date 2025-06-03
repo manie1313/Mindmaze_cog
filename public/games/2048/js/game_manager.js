@@ -166,7 +166,7 @@ GameManager.prototype.move = function (direction) {
           // Update the score
           self.score += merged.value;
           if (window.parent) {
-            window.parent.postMessage({ type: "score", value: this.score }, "*");
+            window.parent.postMessage({ type: "score", value: self.score }, "*");
             console.log("Working")
           }
           // The mighty 2048 tile
