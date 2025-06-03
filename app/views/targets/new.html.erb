@@ -31,11 +31,11 @@
                   What do you want to achieve with your brain power?
                 </span>
               </label>
-           <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
-            <%= f.submit "Improve focus", name: "commit", value: "Improve focus", class: "form-submit-button px-6 py-3" %>
-            <%= f.submit "Boost memory", name: "commit", value: "Boost memory", class: "form-submit-button2 px-6 py-3" %>
-            <%= f.submit "Reduce Stress", name: "commit", value: "Reduce Stress", class: "form-submit-button3 px-6 py-3" %>
-           </div>
+              <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
+                <% Goal.all.each_with_index do |goal, index| %>
+                  <%= f.submit goal.name, name: "commit", value: goal.name, class: "form-submit-button#{index + 1} px-6 py-3" %>
+                <% end %>
+              </div>
             </div>
           <% end %>
         </div>
