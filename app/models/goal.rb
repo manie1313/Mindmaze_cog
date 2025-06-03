@@ -1,5 +1,5 @@
 class Goal < ApplicationRecord
-  has_many :targets
+  has_many :targets, dependent: :destroy
   has_many :games
   # has_many :performances, through: :games
 

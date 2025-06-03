@@ -60,8 +60,8 @@ users_data.each do |data|
   puts "Done"
 end
 
-Goal.destroy_all
 Game.destroy_all
+Goal.destroy_all
 
 goal1 = Goal.create!(
   name: "Reasoning"

@@ -7,7 +7,9 @@ class TargetsController < ApplicationController
   end
 
   def create
-    @target = current_user.targets.new(target_params)
+    @target = Target.new(target_params)
+    # raise
+    @target.user = current_user
     @goal = Goal.find(params[:goal_id])
     @target.goal = @goal
     # raise
@@ -22,6 +24,7 @@ class TargetsController < ApplicationController
   private
 
   def target_params
+    # params.require(:target).permit(:sleep, :goal_id)
     params.require(:target).permit(:sleep, :goal_id)
   end
 end
