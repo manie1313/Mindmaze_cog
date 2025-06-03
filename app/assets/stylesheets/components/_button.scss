@@ -57,35 +57,34 @@
 }
 
 .btn-start {
-  font-size: 2rem;
-  font-weight: bold;
-  padding: 0.75rem 1.5rem;
-  color: white;
-  background: #36db27;
-  border: none;
-  border-radius: 8px;
+  background-color: #7b4086;
+  color: rgb(245, 240, 240);
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease,
-  background-color 0.3s ease;
+  display: inline-block;
+  border: 2px solid black;
   animation: shake 0.6s infinite;
 }
 
 .btn-start:hover {
-  background: #309727;
+  background-color: #561874;
   transform: scale(1.05);
   animation: highlight 0.6s ease-in-out forwards;
 }
 
 @keyframes highlight {
   0% {
-    box-shadow: 0 0 0px #38eb38;
+    box-shadow: 0 0 0px #150436;
   }
   50% {
-    box-shadow: 0 0 20px #259234;
+    box-shadow: 0 0 20px #271258;
   }
   100% {
-    box-shadow: 0 0 0px #094409;
+    box-shadow: 0 0 0px #1c0d55;
   }
 }
 
