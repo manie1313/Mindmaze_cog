@@ -2,6 +2,28 @@
 //   background: #444;
 // }
 
+.score-container {
+  width: 300px;
+}
+
+#score-display {
+  display: flex;
+  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  size: 120px;
+  color: white;
+}
+
+#high-scores, h4 {
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  size: 120px;
+}
+
 .play-btn {
   width: 75px;
   height: 75px;
@@ -91,6 +113,16 @@
 .game-box {
   display: flex;
   justify-content: center;
+  position: relative;
+}
+
+#scoreDisplay {
+  position: absolute;
+  align-self: flex-end;
+  top: 10px;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
 }
 
 #home-bg {

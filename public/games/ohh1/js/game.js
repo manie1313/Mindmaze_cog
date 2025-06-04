@@ -1,4 +1,4 @@
-/* 
+/*
  * Game
  * The main 0h h1 game, a singleton object in global scope.
  * (c) 2014 Q42
@@ -29,10 +29,10 @@ var Game = new (function() {
   function init() {
     $('#scorenr').html(getScore());
     $('#tweeturl').hide();
-    
+
     if (Utils.isTouch())
       $('html').addClass('touch');
-    
+
     $('[data-size]').each(function(i,el){
       var $el = $(el),
           size = $el.attr('data-size') * 1,
@@ -50,7 +50,7 @@ var Game = new (function() {
 
     showTitleScreen();
     resize();
-    
+
     var colors = ['#a7327c', '#c24b31', '#c0cd31']
     Utils.setColorScheme(colors[1]);
   }
@@ -111,16 +111,16 @@ var Game = new (function() {
           id = $el.attr('data-grid'),
           w = $el.width(),
           size = $el.find('tr').first().children('td').length;
-      
+
       var tileSize = Math.floor(w / size);
-      
+
       if (!tileSize) return;
 
       $el.find('.tile').css({width:tileSize,height:tileSize,'line-height':Math.round(tileSize * 0.85) + 'px','font-size':Math.round(tileSize * 0.5) + 'px'});
       var radius = Math.round(tileSize * 0.1);
       var radiusCss = '#' + id + ' .tile .inner { border-radius: ' + radius + 'px; }' +
         '#' + id + ' .tile-1 .inner:after, #' + id + ' .tile-2 .inner:after { border-radius: ' + radius + 'px; }';
-      
+
       Utils.createCSS(radiusCss, id + 'radius');
       Utils.createCSS('.tile.marked .inner { border-width: ' + Math.floor(tileSize / 24)+ 'px }', 'tileSize');
     });
@@ -185,13 +185,13 @@ var Game = new (function() {
     $('#loading').show();
     setTimeout(function() { $('#loading').addClass('show'); },0);
   }
-  
+
   function loadGame(size) {
     onHomeScreen = false;
     $('#game').removeClass('show')
     showLoad();
     resize();
-    
+
     // don't show a loading screen if we have a puzzle ready
     if (Levels.hasPuzzleAvailable(size)) {
       setTimeout(function() {
@@ -211,7 +211,7 @@ var Game = new (function() {
     onHomeScreen = false;
     if (!puzzle || !puzzle.size || !puzzle.full)
       throw 'no proper puzzle object received'
-    
+
     //console.log(puzzle);
     clearTimeouts();
     if (window.STOPPED) return;
@@ -334,12 +334,12 @@ var Game = new (function() {
         }, 500);
         return false;
       }
-      
+
       if (Tutorial.active) {
         Tutorial.tapTile(tile);
         return false;
       }
-      
+
       if (grid && grid.hint)
         grid.hint.clear();
 
@@ -352,7 +352,7 @@ var Game = new (function() {
             lastChange = lastState[2];
         if (lastTile.id != tile.id || (new Date() - lastChange > 500))
           undoStack.push(undoState);
-      } 
+      }
       else
         undoStack.push(undoState);
 
@@ -396,7 +396,7 @@ var Game = new (function() {
         showMenu();
         break;
       case 'back':
-        if (gameEnded) 
+        if (gameEnded)
           return doAction('show-menu');
         clearTimeout(checkTOH);
         Tutorial.end();
@@ -431,7 +431,7 @@ var Game = new (function() {
         //grid.state.restore('empty');
         break;
       case 'help':
-        if (gameEnded) 
+        if (gameEnded)
           break;
         clearTimeout(checkTOH);
         if (Tutorial.active && !Tutorial.hintAllowed())
@@ -465,6 +465,7 @@ var Game = new (function() {
     }
 
     endGame();
+    console.log(newScore)
   }
 
   function tutorialPlayed() {
@@ -493,7 +494,7 @@ var Game = new (function() {
   function backButtonPressed() {
     if (onHomeScreen)
       navigator.app.exitApp()
-    else 
+    else
       doAction('back');
   }
 
@@ -511,10 +512,14 @@ var Game = new (function() {
     clearTimeout(setScore.TOH)
     var curScore = score = getScore(),
         newScore = curScore + (addPoints? addPoints : 0);
-    if (newScore <= curScore) 
+    if (newScore <= curScore)
       return curScore;
 
     window.localStorage.setItem('score', newScore);
+    if (window.parent) {
+    window.parent.postMessage({ type: "score", value: this.score }, "*");
+    console.log("Working");
+    }
     return newScore;
   }
 
@@ -588,7 +593,7 @@ var Game = new (function() {
   this.startTutorial = startTutorial;
   this.checkForLevelComplete = checkForLevelComplete;
   this.undo = undo;
-  
+
   window.__defineGetter__('tile', function() { return grid.tile; });
   this.__defineGetter__('grid', function() { return grid; });
   this.__defineGetter__('debug', function() { return debug; });
