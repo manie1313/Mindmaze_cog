@@ -200,8 +200,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_03_145735) do
   end
 
   create_table "targets", force: :cascade do |t|
-    t.float "sleep"
-    t.string "goal"
+    t.integer "sleep"
     t.bigint "user_id", null: false
     t.bigint "goal_id", null: false
     t.datetime "created_at", null: false

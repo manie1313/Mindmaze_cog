@@ -3,16 +3,20 @@ class TargetsController < ApplicationController
 
   def new
     @target = Target.new
+    @goals = Goal.all
   end
 
   def create
-    @target = current_user.targets.new(target_params)
-    @goal = Goal.find_by(name: params[:commit])
+    @target = Target.new(target_params)
+    # raise
+    @target.user = current_user
+    @goal = Goal.find(params[:goal_id])
     @target.goal = @goal
-
-    if @target.save! && (game = Game.find_by(category: params[:commit]))
-      redirect_to target_game_path(@target, game), notice: "Target saved! Ready to play."
+    # raise
+    if @target.save
+      redirect_to target_games_path(@target), notice: "Target saved! Ready to play."
     else
+      @goals = Goal.all
       render :new, status: :unprocessable_entity
     end
   end
