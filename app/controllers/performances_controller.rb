@@ -1,27 +1,41 @@
 class PerformancesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_target
+  before_action :set_performance, only: [:show]
+
   def index
-    @performances = current_user.performances.includes(:game)
-    # @targets = current_user.targets || []
-    # @performances_today = current_user.performances.where(completed: true, created_at: Time.zone.today.all_day)
-    # @today_target = @targets.select { |t| t.created_at.to_date == Date.today }.last
-    @performances_today = @performances.where(completed: true, created_at: Time.zone.today.all_day)
-    @today_target = current_user.targets.where(created_at: Time.zone.today.all_day).last
+    @performances = @target.performances.includes(:game)
+  end
+
+  def new
+    @performance = @target.performances.new
+  end
+
+  def create
+    @performance = @target.performances.new(performance_params)
+    @performance.completed = true
+
+    if @performance.save
+      redirect_to target_performances_path(@target), notice: "Performance recorded!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
-    # @game = Game.find(params[:game_id])
-    # @performance = Performance.find(params[:id])
-    # @targets = current_user.targets.includes(:performances) || []
-    # @today_performance = @performances_today.last
-    @performance = @target.performances.find(params[:id])
-    @game = @performance.game
-    @performances_today = @target.performances.where(completed: true, created_at: Time.zone.today.all_day)
   end
 
   private
 
   def set_target
-    @target = current_user.target.find(params[:target_id])
+    @target = current_user.targets.find(params[:target_id])
+  end
+
+  def set_performance
+    @performance = @target.performances.find(params[:id])
+  end
+
+  def performance_params
+    params.require(:performance).permit(:description, :accuracy, :time, :completed, :game_id)
   end
 end

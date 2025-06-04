@@ -1,59 +1,37 @@
-<%# <div class="profile-background">
-  <div class="page-wrapper">
-    <div class="targets-performances-container">
-      <h2 class="typewriter text-2xl font-bold text-gray-800">Your Daily Summary</h2>
+<div class="target-contain">
+  <div class="my-page-wrapper">
+    <div class="centered-form-wrapper">
+      <div class="flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-50 to-white">
+        <div class="form-container text-center w-full px-6 max-w-6xl">
+          <header class="bg-white border-b py-6 mb-10">
+            <div class="flex justify-center">
+              <%= image_tag("game1.svg", alt: "Brain icon", width: 120, height: 120, class: "mx-auto") %>
+            </div>
+          </header>
 
-      <% if @today_target %>
-        <%# <p><strong>Sleep:</strong> <%= @today_target.sleep hrs</p> %>
-        <%# <p><strong>Goal:</strong> <%= @today_target.goal</p> %>
-      <%# <% else %>
-        <%# <p>No target set today.</p> %>
-      <%# <% end %>
+          <h2 class="typewriter text-2xl font-bold text-gray-800 mb-12">
+            Your Game Performances
+          </h2>
 
-      <%# <% if @today_performance %>
-        <%# <p><strong>Game Accuracy:</strong> <%= @today_performance.accuracy%</p> %>
-        <%# <p><strong>Completed:</strong> <%= @today_performance.completed ? "Yes" : "No"</p> %>
-      <%# <% else %>
-        <%# <p>No game performance recorded today.</p> %>
-      <%# <% end %>
-    <%# </div>
-  </div>
-  <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
-</div>
-
-<div class="profile-background">
-  <div class="page-wrapper">
-    <div class="targets-performances-container">
-      <h2 class="typewriter text-2xl font-bold text-gray-800">Your Daily Summary</h2>
-
-      <% if @today_target %>
-        <p><strong>Sleep:</strong> <%= @today_target.sleep %> hrs</p>
-        <p><strong>Goal:</strong> <%= @today_target.goal %></p>
-      <% else %>
-        <p>No target set today.</p>
-      <% end %>
-
-      <% if @today_performance %>
-        <p><strong>Game Played:</strong> <%= @today_performance.game.name %></p>
-        <p><strong>Accuracy:</strong> <%= @today_performance.accuracy %>%</p>
-        <p><strong>Completed:</strong> <%= @today_performance.completed ? "Yes" : "No" %></p>
-      <% else %>
-        <p>No game performance recorded today.</p>
-      <% end %>
-
-      <h3 class="mt-4 text-xl font-semibold">All Performances</h3>
-      <div class="performances-list">
-        <% @all_performances.each do |performance| %>
-          <div class="performance-card">
-            <%= link_to target_performance_path(@target, performance), class: "performance-link" do %>
-              <h4><%= performance.game.name %></h4>
-              <p>Accuracy: <%= performance.accuracy %>%</p>
-              <p>Date: <%= performance.created_at.to_date %></p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% @performances.group_by(&:game).each do |game, performances| %>
+              <% performances.each do |performance| %>
+                <div class="bg-white shadow-xl rounded-2xl p-6 text-gray-800 border border-gray-100">
+                  <h3 class="text-xl font-semibold text-blue-700 mb-2"><%= game.name %></h3>
+                  <p class="text-sm text-gray-700 mb-1"><strong>Description:</strong> <%= game.description.truncate(80) %></p>
+                  <p class="text-sm text-gray-700 mb-1"><strong>Category:</strong> <%= game.category %></p>
+                  <p class="text-sm text-gray-700 mb-1"><strong>Accuracy:</strong> <%= performance.accuracy %>%</p>
+                  <p class="text-sm text-gray-700 mb-1"><strong>Completed:</strong> <%= performance.completed ? "Yes" : "No" %></p>
+                  <p class="text-sm text-gray-700 mb-1"><strong>Date:</strong> <%= performance.created_at.strftime("%b %d, %Y") %></p>
+                  <p class="text-sm text-gray-700"><strong>Time:</strong> <%= performance.created_at.strftime("%I:%M %p") %></p>
+                </div>
+              <% end %>
             <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
+
   <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
 </div>
