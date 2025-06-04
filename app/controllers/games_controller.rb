@@ -10,8 +10,10 @@ class GamesController < ApplicationController
 
   def index
     # @games = Game.all
+    # @goal = Goal.find(params[:goal_id])
     @target = Target.find(params[:target_id])
     @goal = @target.goal
+    # @games = Game.where(goal_id: @goal.id)
     @games = @goal.games
   end
 

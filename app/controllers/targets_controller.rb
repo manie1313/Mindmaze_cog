@@ -15,6 +15,7 @@ class TargetsController < ApplicationController
     # raise
     if @target.save
       redirect_to target_games_path(@target), notice: "Target saved! Ready to play."
+      # redirect_to root_path
     else
       @goals = Goal.all
       render :new, status: :unprocessable_entity
