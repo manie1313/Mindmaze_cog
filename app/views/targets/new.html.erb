@@ -34,7 +34,7 @@
                 </span>
               </label>
 
-              <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
+<!--               <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
                 <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Reasoning").id,
                 class: "form-submit-button px-6 py-3", type: "submit" do %>
                 Reasoning 🤔
@@ -49,8 +49,13 @@
                 class: "form-submit-button3 px-6 py-3", type: "submit" do %>
                 Logic 🤯
                 <% end %>
-              </div>
+              </div> -->
 
+              <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
+                <% Goal.all.each_with_index do |goal, index| %>
+                  <%= f.submit goal.name, name: "commit", value: goal.name, class: "form-submit-button#{index + 1} px-6 py-3" %>
+                <% end %>
+              </div>
             </div>
           <% end %>
         </div>

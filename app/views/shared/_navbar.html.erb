@@ -32,10 +32,11 @@
             <li class="nav-item">
                <%= link_to "Home", root_path, class: "dropdown-item" %>
             </li>
-            <li class="nav-item">
-             <%= link_to "?", class: "dropdown-item" %>
+<!--             <li class="nav-item"> -->
+              
              <%# , target_games_path(@target) %>
-            </li>
+             <%#= link_to "Games", games_path, class: "dropdown-item" %>
+<!--             </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dashboard
@@ -48,8 +49,8 @@
                   <%= link_to "Targets", new_target_path, class: "dropdown-item" %>
                 </li>
                 <li>
-                 <%= link_to "View Performances", class: "dropdown-item" %>
-                  <%# performances_path, %>
+
+                 <%#= link_to "View Performances", performances_path, class: "dropdown-item" %>
                 </li>
                 <li>
                   <hr class="dropdown-divider">

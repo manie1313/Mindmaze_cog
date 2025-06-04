@@ -7,22 +7,53 @@
 
 <% url = @game.embed_link %>
 
- <div class="container game-container" data-controller="game">
+ <div class="container game-container d-flex" data-controller="game">
     <div class="game-box">
       <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
     </div>
-    <button data-action="click->game#getScore">Score</button>
-  </div>
 
-<div id="score-display" style="margin-top 20px;">Score: 0</div>
+    <div class="container score-container" style="margin-top 20px;">
+      <h3 class="score-container">Score: 0</h3>
+      <br>
+      <h4 class="best-container"></h4>
+  
+    </div>
+  </div>
+<!-- </div> -->
+
 
 <script>
   window.addEventListener("message", function(event) {
-    // Optional: limit to same origin
-    if (event.origin !== window.location.origin) return;
-
+    console.log("Message received:", event);
+    // const ol = document.getElementById("score-list");
+    // const score = event.data.value;
+    // console.log(ol.children);
+    // const existingScoresArray = Array.from(ol.children)
+    // const existingScores = existingScoresArray.map(child => Number.parseInt(child.textContent))
+    // console.log(existingScores);
+    // console.log(score);
+    // const scores = [...existingScores, score]
+    // const sortedScores = scores.sort((a, b) => Number(b) - Number(a));
+    // console.log(sortedScores)
+    // const newScores = sortedScores.map(score => {
+    //   return `<li>${score}</li>`
+    // }).slice(0, 5).join("");
+    // console.log(newScores)
+    // ol.innerHTML = newScores
+    // For testing only: skip origin check
     if (event.data.type === "score") {
       document.getElementById("score-display").textContent = "Score: " + event.data.value;
     }
   });
+
+// const highScores = []
+// highScores.sort();
+
+// if (score > highScores.findLast) {
+//   high_scores.findLast = score;
+//   highScores.sort;
+// }
+
+
+
 </script>

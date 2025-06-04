@@ -78,7 +78,7 @@ goal3 = Goal.create!(
 Game.create!(
   mode: "single player",
   name: "2048",
-  category: "Matching",
+  category: "Reasoning",
   description: "2048 is a simple yet addictive sliding puzzle game where the goal is to combine numbered tiles on a grid to reach the number 2048. Players use arrow keys to slide tiles in four directions. When two tiles with the same number touch, they merge into one — doubling in value. The game ends when no more moves are possible or when the 2048 tile is created.",
   embed_link: "/games/2048/index.html",
   image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748864553/2048_logo_v8gakh.svg",
@@ -88,7 +88,7 @@ Game.create!(
 Game.create!(
   mode: "single player",
   name: "Hextris",
-  category: "Reaction Based",
+  category: "Time Reaction",
   description: "Hextris is a fast-paced puzzle game inspired by Tetris, where colored hexagonal blocks fall around a central hexagon. Players rotate the hexagon to align matching colors; when three or more blocks of the same color touch, they disappear. The game speeds up over time, challenging your reflexes and strategy.",
   embed_link: "/games/hextris/index.html",
   image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748864662/0jCMd4dIANQ9QD3Q1r0y7-ZnpVb74dMHHtsz9-qPFDSRHRVvg-Q3ENsaCOabUsvsz7Q_o3tprc.png",
