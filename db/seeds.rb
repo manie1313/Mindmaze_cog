@@ -105,3 +105,5 @@ Game.create!(
   goal: goal3
 )
 puts "#{Game.count} games - #{Goal.count} goals"
+
+# seeding targets

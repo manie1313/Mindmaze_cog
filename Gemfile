@@ -44,6 +44,7 @@ gem "cloudinary"
 gem "ruby-openai"
 gem "solid_cache"
 gem "solid_queue"
+gem 'httparty'
 
 group :development, :test do
   gem "dotenv-rails"
