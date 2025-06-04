@@ -23,6 +23,9 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
     self.updateScore(metadata.score);
     self.updateBestScore(metadata.bestScore);
+    //crate fetch request create or update of performance
+    //root is either localhost3000/performances or localhost3000/performances/:id
+    //hash headers body(metadata.bestscore) and method
 
     if (metadata.terminated) {
       if (metadata.over) {

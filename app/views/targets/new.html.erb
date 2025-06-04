@@ -24,6 +24,8 @@
               </label>
               <%= f.input :sleep, placeholder: 'e.g. 7.5 hours', label: false, input_html: { id: "sleep_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-green-400 focus:border-transparent" } %>
             </div>
+
+
             <div class="text-left mt-6 pt-2">
               <label class="block text-lg font-semibold text-gray-800 mb-6">
                 <span class="inline-flex items-center gap-2">
@@ -31,6 +33,24 @@
                   What do you want to achieve with your brain power?
                 </span>
               </label>
+
+<!--               <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
+                <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Reasoning").id,
+                class: "form-submit-button px-6 py-3", type: "submit" do %>
+                Reasoning 🤔
+                <% end %>
+
+                <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Time Reaction").id,
+                class: "form-submit-button2 px-6 py-3", type: "submit" do %>
+                Time Reaction ⌛
+                <% end %>
+
+                <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Logic").id,
+                class: "form-submit-button3 px-6 py-3", type: "submit" do %>
+                Logic 🤯
+                <% end %>
+              </div> -->
+
               <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
                 <% Goal.all.each_with_index do |goal, index| %>
                   <%= f.submit goal.name, name: "commit", value: goal.name, class: "form-submit-button#{index + 1} px-6 py-3" %>
@@ -38,6 +58,8 @@
               </div>
             </div>
           <% end %>
+        </div>
+
         </div>
       </div>
     </div>
