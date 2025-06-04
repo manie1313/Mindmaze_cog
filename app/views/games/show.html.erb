@@ -1,28 +1,26 @@
 <div style="background-image "id="home-bg">
 </div>
 
+<p>
+  <%= @game.content %>
+</p>
+
 <% url = @game.embed_link %>
 
  <div class="container game-container d-flex" data-controller="game">
     <div class="game-box">
       <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
     </div>
+
     <div class="container score-container" style="margin-top 20px;">
       <h3 class="score-container">Score: 0</h3>
       <br>
       <h4 class="best-container"></h4>
-      <%# <div id="high-scores">
-        <ol id="score-list">
-          <li style="background-color: gold;">0</li>
-          <li style="background-color: lightgray;">0</li>
-          <li style="background-color: brown;">0</li>
-          <li>0</li>
-          <li>0</li>
-        </ol> %>
-      </div>
+  
     </div>
   </div>
-</div>
+<!-- </div> -->
+
 
 <script>
   window.addEventListener("message", function(event) {

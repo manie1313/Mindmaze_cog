@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "performances/show"
+  # get "performances/show"
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -14,10 +14,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  resources :games, only: %i[index show] do
-    resources :performances, only: %i[index new create show]
+  resources :targets, only: %i[index new create show] do
+    # resources :goals, only: %i[new create] ==>seed file
+    resources :performances, only: %i[index show new create]
+    resources :games, only: %i[show index]
   end
-  resources :targets, only: %i[index new create show]
+
   get "my_profile", to: "profiles#my_profile"
-  resources :performances, only: [:index]
 end

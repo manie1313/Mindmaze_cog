@@ -25,16 +25,18 @@
               <%= f.input :sleep, placeholder: 'e.g. 7.5 hours', label: false, input_html: { id: "sleep_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-green-400 focus:border-transparent" } %>
             </div>
             <div class="text-left mt-6 pt-2">
-              <label class="block text-lg font-semibold text-gray-800 mb-2" for="goal_input">
+              <label class="block text-lg font-semibold text-gray-800 mb-6">
                 <span class="inline-flex items-center gap-2">
                   <span class="h-7 w-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">🎯</span>
                   What do you want to achieve with your brain power?
                 </span>
               </label>
-              <%= f.input :goal, placeholder: "e.g. Improve focus, boost memory, reduce stress", label: false, input_html: { id: "goal_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-blue-400 focus:border-transparent" } %>
+              <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
+                <% Goal.all.each_with_index do |goal, index| %>
+                  <%= f.submit goal.name, name: "commit", value: goal.name, class: "form-submit-button#{index + 1} px-6 py-3" %>
+                <% end %>
+              </div>
             </div>
-
-            <%= f.button :submit, "Save daily goals", class: "form-submit-button mt-8 w-full" %>
           <% end %>
         </div>
       </div>
@@ -42,4 +44,5 @@
   </div>
   </div>
   </div>
+  <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
 </div>

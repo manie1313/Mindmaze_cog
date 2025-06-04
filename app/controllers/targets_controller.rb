@@ -1,15 +1,17 @@
 class TargetsController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @target = Target.new
   end
 
   def create
-    @target = Target.new(target_params)
-    @target.user = current_user
+    @target = current_user.targets.new(target_params)
+    @goal = Goal.find_by(name: params[:commit])
+    @target.goal = @goal
 
-    if @target.save
-      redirect_to my_profile_path, notice: "Target saved successfully."
+    if @target.save! && (game = Game.find_by(category: params[:commit]))
+      redirect_to target_game_path(@target, game), notice: "Target saved! Ready to play."
     else
       render :new, status: :unprocessable_entity
     end
@@ -18,6 +20,6 @@ class TargetsController < ApplicationController
   private
 
   def target_params
-    params.require(:target).permit(:sleep, :goal)
+    params.require(:target).permit(:sleep)
   end
 end

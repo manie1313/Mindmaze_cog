@@ -1,5 +1,5 @@
 class Performance < ApplicationRecord
-  belongs_to :user
+  belongs_to :target
   belongs_to :game
 
   validates :description, length: { in: 10..40 }
