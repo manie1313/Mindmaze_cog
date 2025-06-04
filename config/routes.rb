@@ -16,11 +16,10 @@ Rails.application.routes.draw do
 
   resources :targets, only: %i[index new create show] do
     # resources :goals, only: %i[new create] ==>seed file
-    resources :games, only: %i[index show]
-    resources :performances, only: %i[index show]
+    resources :games, only: %i[index show] do
+      resources :performances, only: %i[index show]
+    end
   end
-
-  resources :games, only: %i[show]
 
   get "my_profile", to: "profiles#my_profile"
 end

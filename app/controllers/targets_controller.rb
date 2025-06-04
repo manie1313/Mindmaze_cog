@@ -25,6 +25,6 @@ class TargetsController < ApplicationController
 
   def target_params
     # params.require(:target).permit(:sleep, :goal_id)
-    params.require(:target).permit(:sleep, :goal_id)
+    params.require(:target).permit(:sleep)
   end
 end
