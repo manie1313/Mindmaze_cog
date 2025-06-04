@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :set_target
   # def index
   #   case @target.goal
   #   when "Improve focus"
@@ -20,5 +21,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @performance = Performance.new
     @target = current_user.targets.last
+  end
+
+  private
+
+  def set_target
+    @target = Target.find(params[:target_id])
   end
 end
