@@ -8,7 +8,11 @@ class GamesController < ApplicationController
   # end
 
   def index
-    @games = Game.all
+    # @games = Game.all
+    # @goal = Goal.find(params[:goal_id])
+    @target = Target.find(params[:target_id])
+    @goal = @target.goal
+    @games = Game.where(goal_id: @goal.id)
   end
 
   def show

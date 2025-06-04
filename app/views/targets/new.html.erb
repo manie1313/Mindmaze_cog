@@ -1,70 +1,72 @@
 <div class="target-contain">
   <div class="my-page-wrapper">
-  <div class="centered-form-wrapper">
-  <div class="flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-50 to-white">
-    <div class="form-container text-center">
-      <header class="bg-white border-b py-6">
-        <div class="flex justify-center">
-          <%= image_tag("brain-form.svg", alt: "Brain icon", width: 120, height: 120, class: "mx-auto") %>
-        </div>
-      </header>
-
-      <div class="p-10 pt-5">
-        <h2 class="typewriter text-2xl font-bold text-gray-800">
-          Time to fine-tune your mind for today!
-        </h2>
-        <div class="mt-10 pt-5">
-          <%= simple_form_for(@target, html: { class: "space-y-6" }) do |f| %>
-            <div class="text-left">
-              <label class="block text-lg font-semibold text-gray-800 mb-2" for="sleep_input">
-                <span class="inline-flex items-center gap-2">
-                  <span class="h-7 w-7 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-sm font-bold">💤</span>
-                  How many hours of sleep did you get last night?
-                </span>
-              </label>
-              <%= f.input :sleep, placeholder: 'e.g. 7.5 hours', label: false, input_html: { id: "sleep_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-green-400 focus:border-transparent" } %>
+    <div class="centered-form-wrapper">
+      <div class="flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-50 to-white">
+        <div class="form-container text-center">
+          <header class="bg-white border-b py-6">
+            <div class="flex justify-center">
+              <%= image_tag("brain-form.svg", alt: "Brain icon", width: 120, height: 120, class: "mx-auto") %>
             </div>
+          </header>
 
+          <div class="p-10 pt-5">
+            <h2 class="typewriter text-2xl font-bold text-gray-800">
+              Time to fine-tune your mind for today!
+            </h2>
 
-            <div class="text-left mt-6 pt-2">
-              <label class="block text-lg font-semibold text-gray-800 mb-6">
-                <span class="inline-flex items-center gap-2">
-                  <span class="h-7 w-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">🎯</span>
-                  What do you want to achieve with your brain power?
-                </span>
-              </label>
+            <div class="mt-10 pt-5">
+              <%= simple_form_for(@target, html: { class: "space-y-6" }) do |f| %>
+                <div class="text-left">
+                  <label class="block text-lg font-semibold text-gray-800 mb-2" for="sleep_input">
+                    <span class="inline-flex items-center gap-2">
+                      <span class="h-7 w-7 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-sm font-bold">
+                        💤
+                      </span>
+                      How many hours of sleep did you get last night?
+                    </span>
+                  </label>
+                  <%= f.input :sleep, placeholder: 'e.g. 7.5 hours', label: false, input_html: { id: "sleep_input", class: "w-full border rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-green-400 focus:border-transparent" } %>
+                </div>
 
-<!--               <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
-                <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Reasoning").id,
-                class: "form-submit-button px-6 py-3", type: "submit" do %>
-                Reasoning 🤔
-                <% end %>
+                <div class="text-left mt-6 pt-2">
+                  <label class="block text-lg font-semibold text-gray-800 mb-6">
+                    <span class="inline-flex items-center gap-2">
+                      <span class="h-7 w-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">
+                        🎯
+                      </span>
+                      What do you want to achieve with your brain power?
+                    </span>
+                  </label>
 
-                <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Time Reaction").id,
-                class: "form-submit-button2 px-6 py-3", type: "submit" do %>
-                Time Reaction ⌛
-                <% end %>
+                  <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
 
-                <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Logic").id,
-                class: "form-submit-button3 px-6 py-3", type: "submit" do %>
-                Logic 🤯
-                <% end %>
-              </div> -->
+                     <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Reasoning").id,
+                      class: "form-submit-button px-6 py-3", type: "submit" do %>
+                      Reasoning 🤔
+                    <% end %>
 
-              <div id="performance-buttons-container" class="flex gap-4 flex-wrap mt-24">
-                <% Goal.all.each_with_index do |goal, index| %>
-                  <%= f.submit goal.name, name: "commit", value: goal.name, class: "form-submit-button#{index + 1} px-6 py-3" %>
-                <% end %>
-              </div>
+                    <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Time Reaction").id,
+                      class: "form-submit-button2 px-6 py-3", type: "submit" do %>
+                      Time Reaction ⌛
+                    <% end %>
+
+                    <%= f.button :button, name: "goal_id", value: Goal.find_by(name: "Logic").id,
+                      class: "form-submit-button3 px-6 py-3", type: "submit" do %>
+                      Logic 🤯
+                    <% end %>
+
+                      <%# <% Goal.all.each_with_index do |goal, index| %>
+                        <%# <%= f.submit goal.name, name: "goal_name", value: goal.name, class: "form-submit-button#{index + 1} px-6 py-3" %>
+                      <%# <% end %>
+
+                  </div>
+                </div>
+              <% end %>
             </div>
-          <% end %>
-        </div>
-
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
   </div>
   <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
 </div>
