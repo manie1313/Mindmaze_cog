@@ -1,4 +1,8 @@
-<%= simple_form_for([target, performance], url: target_performances_path(target), method: :post, html: { data: { track_time_target: "form" } }) do |f| %>
+<%= simple_form_for([target, performance],
+      url: target_performances_path(target),
+      method: :post,
+      html: { data: { controller: "track-time", track_time_target: "form" } }) do |f| %>
+
   <%= f.hidden_field :game_id, value: game&.id %>
 
   <div class="mb-3">
@@ -18,7 +22,7 @@
   </div>
 
   <div class="mb-3">
-    <%= f.hidden_field :time, id: "time-spent" %>
+    <%= f.hidden_field :time, id: "time-spent", data: { track_time_target: "timeInput" } %>
   </div>
 
   <div class="mb-3">
