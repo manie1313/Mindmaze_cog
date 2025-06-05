@@ -1,7 +1,7 @@
 class Target < ApplicationRecord
   belongs_to :user
   belongs_to :goal
-  has_many :performances
+  has_many :performances, dependent: :destroy
   has_many :games, through: :performances
 
   validates :sleep, presence: true

@@ -12,6 +12,8 @@ require "json"
 require "open-uri"
 
 User.destroy_all
+Game.destroy_all
+Goal.destroy_all
 
 users_data = [
   {
@@ -61,8 +63,6 @@ users_data.each do |data|
   puts "Done"
 end
 
-Game.destroy_all
-Goal.destroy_all
 
 goal1 = Goal.create!(
   name: "Reasoning"
