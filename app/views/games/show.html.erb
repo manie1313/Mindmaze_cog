@@ -7,21 +7,100 @@
       <%= @game.content %>
     </p>
 
+<%# TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT %>
+<h1 class="my-font text-4xl font-bold mb-6">Play <%= @game.name %></h1>
+
+<% if @game.embed_link.present? && @game.embed_link.include?("cognifit") %>
+
+  <div id="cogniFitContent" class="mx-auto" style="height: 600px;">
+  </div>
+  <button id="launch-game-button" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+    Launch Game
+  </button>
+
+  <script src="https://js.cognifit.com/2025-05-30_1011_witchking/html5Loader.js">
+  </script>
+  <script>
+    document.getElementById("launch-game-button").addEventListener("click", function () {
+      html5Loader.launchGame("<%= @game.embed_link %>", "cogniFitContent");
+    });
+  </script>
+
+<% elsif @game.embed_link.present? %>
+<%# GITHUB GAMES %>
   <% url = @game.embed_link %>
-  <div class="d-flex>
-    <div class="container game-container d-flex">
-        <div class="game-box">
-          <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
-        </div>
 
-        <div class="container score-container" style="margin-top 20px;">
-          <h3 class="score-container">Score: 0</h3>
-          <br>
-          <h4 class="best-container"></h4>
+  <div class="container game-container d-flex" data-controller="game">
 
-        </div>
-      </div>
-  </div> <!-- </div> -->
+    <div class="game-box">
+      <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
+    </div>
+
+    <%# <div class="container score-container" style="margin-top 20px;">
+      <h3 class="score-container">Score: 0</h3>
+      <br>
+      <h4 class="best-container"></h4>
+    </div> %>
+
+  </div>
+
+  <script>
+    window.addEventListener("message", function(event) {
+      console.log("Message received:", event);
+      // const ol = document.getElementById("score-list");
+      // const score = event.data.value;
+      // console.log(ol.children);
+      // const existingScoresArray = Array.from(ol.children)
+      // const existingScores = existingScoresArray.map(child => Number.parseInt(child.textContent))
+      // console.log(existingScores);
+      // console.log(score);
+      // const scores = [...existingScores, score]
+      // const sortedScores = scores.sort((a, b) => Number(b) - Number(a));
+      // console.log(sortedScores)
+      // const newScores = sortedScores.map(score => {
+      //   return `<li>${score}</li>`
+      // }).slice(0, 5).join("");
+      // console.log(newScores)
+      // ol.innerHTML = newScores
+      // For testing only: skip origin check
+      if (event.data.type === "score") {
+        document.getElementById("score-display").textContent = "Score: " + event.data.value;
+      }
+    });
+
+// const highScores = []
+// highScores.sort();
+
+// if (score > highScores.findLast) {
+//   high_scores.findLast = score;
+//   highScores.sort;
+// }
+
+
+
+  </script>
+<% else %>
+  <p class="text-red-600 font-semibold">No playable version available for this game.</p>
+<% end %>
+
+
+<%# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX %>
+<%# <% url = @game.embed_link %>
+
+ <%# <div class="container game-container d-flex" data-controller="game">
+    <div class="game-box">
+      <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>
+      <%# </iframe> %>
+    <%# </div>
+
+    <div class="container score-container" style="margin-top 20px;">
+      <h3 class="score-container">Score: 0</h3>
+      <br> %>
+      <%# <h4 class="best-container"></h4> %>
+
+    <%# </div>
+  </div> %>
+
 
 
 
@@ -49,7 +128,12 @@
 
             <div class="mb-3">
 
-              <%= f.input :score, label: "Score", input_html: { class: "form-control", data: { "game-target": "score", "game-score-value": 0 } } %>
+              <%= f.input :score, label: "Best Score", input_html: { class: "form-control", data: { game_target: "score" } } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.input :score, label: "Last Score", input_html: { class: "form-control", data: { game_target: "lastScore" } } %>
+
             </div>
 
             <div class="mb-3">
