@@ -1,32 +1,38 @@
-<div style="background-image "id="home-bg">
-</div>
+<div class="container d-flex justify-content-center m-4">
+  <div style="background-image "id="home-bg"></div>
+  <div class="d-flex flex-column align-self-center rounded p-3">
+    <h1 class="my-font text-4xl font-bold mb-6">Play <%= @game.name %></h1>
 
-<p>
-  <%= @game.content %>
-</p>
+    <p class="mt-4">
+      <%= @game.content %>
+    </p>
 
-<%# TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT %>
-<h1 class="my-font text-4xl font-bold mb-6">Play <%= @game.name %></h1>
+    <button type="button" class="form-submit-button2 w-100" data-bs-toggle="modal" data-bs-target="#performanceModal">Submit Game Performance</button>
 
-<% if @game.embed_link.present? && @game.embed_link.include?("cognifit") %>
-
-  <div id="cogniFitContent" class="mx-auto" style="height: 600px;">
   </div>
-  <button id="launch-game-button" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
-    Launch Game
-  </button>
 
-  <script src="https://js.cognifit.com/2025-05-30_1011_witchking/html5Loader.js">
-  </script>
-  <script>
-    document.getElementById("launch-game-button").addEventListener("click", function () {
-      html5Loader.launchGame("<%= @game.embed_link %>", "cogniFitContent");
-    });
-  </script>
+  <%# TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT %>
 
-<% elsif @game.embed_link.present? %>
-<%# GITHUB GAMES %>
-  <% url = @game.embed_link %>
+  <div>
+    <% if @game.embed_link.present? && @game.embed_link.include?("cognifit") %>
+
+      <div id="cogniFitContent" class="mx-auto" style="height: 600px;">
+      </div>
+      <button id="launch-game-button" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+        Launch Game
+      </button>
+
+      <script src="https://js.cognifit.com/2025-05-30_1011_witchking/html5Loader.js">
+      </script>
+      <script>
+        document.getElementById("launch-game-button").addEventListener("click", function () {
+          html5Loader.launchGame("<%= @game.embed_link %>", "cogniFitContent");
+        });
+      </script>
+
+    <% elsif @game.embed_link.present? %>
+    <%# GITHUB GAMES %>
+      <% url = @game.embed_link %>
 
   <div class="container game-container" data-controller="track-time">
     <div class="container game-container d-flex" data-controller="game">
