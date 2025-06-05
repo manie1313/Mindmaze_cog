@@ -2,17 +2,35 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="game"
 export default class extends Controller {
-  static targets = ["score", "lastScore"]
+  static targets = ["score", "lastScore", "percentage"]
   // static values = {
   //   score: Number
   // }
 
   connect() {
+    // window.addEventListener("load", () => {
+    //   const iframe = document.getElementById("game-frame");
+
+    //   iframe.onload = () => {
+    //     const frameDocument = iframe.window.document;
+    //     console.log(frameDocument)
+    //     const button = frameDocument.getElementById("restart-button");
+
+    //     if (button) {
+    //       button.click();
+    //     } else {
+    //       console.log("no button found")
+    //     }
+
+    //   }
+    // });
+
     console.log("Connected")
     // console.log(this.scoreTarget)
     // console.log(this.lastScoreTarget)
     const TARGET = this.scoreTarget;
     const LASTTARGET = this.lastScoreTarget
+    const PERCENTAGE = this.percentageTarget
     window.addEventListener("message", (event) => {
     console.log("Message received:", event);
 
@@ -30,6 +48,10 @@ export default class extends Controller {
       // console.log(LASTTARGET.value);
     }
 
+    if (this.scoreValue && this.scoreValue > 0) {
+      const accuracy = (this.lastScoreValue / this.scoreValue) * 100;
+      PERCENTAGE.value = accuracy.toFixed(2);
+    }
 
     });
 
