@@ -21,4 +21,10 @@ Rails.application.routes.draw do
   end
 
   get "my_profile", to: "profiles#my_profile"
+  get "/users/search", to: "users#search"
+  resources :profiles, only: [:show], param: :username
+  # post '/cognifit/token', to: 'cognifit#token'
+  # post 'cognifit/get_access_token', to: 'cognifit#get_access_token'
+  # post "targets/:target_id/games/:key/play", to: "games#play", as: :play_game
+
 end

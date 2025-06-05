@@ -1,0 +1,131 @@
+.game-card {
+  position: relative;
+  border: 2px solid #030202;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  transition: all 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.description-info {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgb(236, 241, 150);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+}
+
+.description-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-content {
+  padding: 16px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.see-description-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.see-description-btn:hover {
+  background: #45a049;
+}
+
+.description-card {
+  display: none !important; /* Force hidden by default */
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  right: 10px;
+  z-index: 100;
+  background: rgba(119, 70, 174, 0.9); /* Purple with 90% opacity */
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-top: 10px;
+
+  h3 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+  }
+
+  .close-description {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+
+.game-card-container {
+  position: relative;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+.description-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.close-description {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}

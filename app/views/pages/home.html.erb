@@ -9,22 +9,24 @@
   <%# <%= audio_tag "eren_roar.mp3", id: "eren-scream", preload: "auto" %>
   <%# ? %>
  <div class="position-relative vh-100 text-center">
-  <%= audio_tag("https://res.cloudinary.com/dtyuldook/raw/upload/v1748601741/eren_roar.mp3",
+
+  <%= audio_tag("https://res.cloudinary.com/dtyuldook/video/upload/v1749130672/Mindmaze_V2_qlbfwy.mp3",
+
                id: "eren-scream",
                preload: "auto") %>
-
+  <%# https://res.cloudinary.com/dtyuldook/raw/upload/v1748601741/eren_roar.mp3 %>
 <!--   <div class="position-absolute top-0 start-50 translate-middle-x mt-4">
     <h1 class="three-d-text">
       Welcome to MindMaze
     </h1>  -->
 
   <div class="position-absolute top-0 start-50 translate-middle-x">
-    <h1 class="three-d-text mt-0">
+    <h1 class="three-d-text mt-0 mb-custom-large">
       Welcome to MindMaze
     </h1>
   </div>
 
-  <div class="d-flex flex-column justify-content-center align-items-center h-100">
+  <div class="d-flex flex-column justify-content-center align-items-center h-100 mt-5">
     <%= link_to "Start", new_target_path, id: "start-link", class: "btn btn-start" %>
   </div>
 </div>

@@ -7,10 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
+require 'httparty'
+require "json"
 require "open-uri"
 
 User.destroy_all
+Game.destroy_all
+Goal.destroy_all
 
 users_data = [
   {
@@ -51,6 +54,40 @@ users_data = [
   }
 ]
 
+puts "Creating targets and performances with dated entries..."
+
+User.all.each do |user|
+  Goal.all.each do |goal|
+    target = Target.create!(
+      user: user,
+      goal: goal,
+      sleep: rand(6..9)
+    )
+
+    # Create dated performances for past 6 days
+    6.times do |i|
+      day = i.days.ago.beginning_of_day
+      goal.games.each do |game|
+        Performance.create!(
+          target: target,
+          game: game,
+          description: "Seeded performance for #{user.username} on #{game.name}",
+          accuracy: rand(0.5..1.0).round(2),
+          score: rand(100..1000),
+          time: rand(10.0..120.0).round(2),
+          completed: [true, false].sample,
+          created_at: day,
+          updated_at: day
+        )
+      end
+    end
+  end
+end
+
+puts "#{Performance.count} performances seeded across 6 days."
+
+
+
 users_data.each do |data|
   puts data[:username]
   file = URI.parse(data[:avatar_url]).open
@@ -60,8 +97,6 @@ users_data.each do |data|
   puts "Done"
 end
 
-Game.destroy_all
-Goal.destroy_all
 
 goal1 = Goal.create!(
   name: "Reasoning"
@@ -104,4 +139,42 @@ Game.create!(
   image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748864737/LYnyOCfAUobaPRm262hjhvNg9eE14sPj5H6CFiUxjktt7R0QZX5kLbE7LDEgxm6brwg_ci1jbn.png",
   goal: goal3
 )
+
+
+puts "Fetching Cognifit games..."
+
+url = "https://api.cognifit.com/programs/tasks"
+response = HTTParty.get(url, query: {
+  client_id: ENV['COGNIFIT_CLIENT_ID'],
+  locales: ['en'],
+  category: 'COGNITIVE'
+})
+
+if response.success?
+  games = response.parsed_response.first(20)
+  all_goals = Goal.all
+
+  games.each do |game_data|
+    Game.create!(
+      mode: "Single player",
+      name: game_data.dig("assets", "titles", "en") || game_data["key"],
+      category: "Cognitive",
+      description: game_data.dig("assets", "descriptions", "en") || "CogniFit Game",
+      embed_link: game_data["key"],
+      image_url: game_data.dig("assets", "images", "icon") || "",
+      goal: all_goals.sample,
+    )
+  end
+
+  puts "Seeded 3 Cognifit games."
+else
+  puts "Failed to fetch Cognifit games: #{response.code}"
+end
+
+
+
+
+
 puts "#{Game.count} games - #{Goal.count} goals"
+
+# seeding targets

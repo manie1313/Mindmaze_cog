@@ -1,0 +1,23 @@
+<div class="profile-background">
+  <div class="page-wrapper">
+    <div class="targets-performances-container">
+      <h2 class="typewriter text-2xl font-bold text-gray-800">Your Daily Summary</h2>
+
+      <%= simple_form_for [@target, @performance] do |f| %>
+        <%= f.hidden_field :game_id, value: @game&.id || params[:game_id] %>
+
+        <%= f.input :description, label: "Performance Description", input_html: { class: "form-control" } %>
+        <%= f.input :accuracy, label: "Accuracy", input_html: { class: "form-control" } %>
+        <%= f.input :score, label: "Score", input_html: { class: "form-control" } %>
+        <%= f.input :time, label: "Time Spent (min)", input_html: { class: "form-control" } %>
+        <%= f.input :completed, as: :boolean, label: "Completed?", input_html: { class: "form-check-input" } %>
+
+        <div class="modal-footer">
+          <button type="button" class="cancel-button" data-bs-dismiss="modal">Cancel</button>
+          <%= f.submit "Save Performance", class: "form-submit-button1" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <img src="https://media.tenor.com/uCi8SyPb7bQAAAAi/brain-hannover.gif" alt="Corner Brain GIF" class="corner-gif">
+</div>
