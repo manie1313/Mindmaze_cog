@@ -8,6 +8,7 @@
   padding-right: 0.5rem;
 }
 
+
 .form-submit-button1 {
   background-color: #ca96e2;
   color: white;
@@ -42,6 +43,7 @@
   }
 }
 
+
 .form-submit-button3 {
   background-color: #34D399;
   color: white;
@@ -62,20 +64,21 @@
 .btn-start {
   background-color: #7b4086;
   color: rgb(245, 240, 240);
-  padding: 1rem 2rem;
+  padding: 1.75rem 4rem;
   border-radius: 9999px;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 700;
   transition: background-color 0.3s ease, transform 0.3s ease;
   text-decoration: none;
   display: inline-block;
-  border: 2px solid black;
+  border: 3px solid black;
   animation: shake 0.6s infinite;
+  cursor: pointer;
 }
 
 .btn-start:hover {
   background-color: #561874;
-  transform: scale(1.05);
+  transform: scale(1.1);       
   animation: highlight 0.6s ease-in-out forwards;
 }
 
@@ -97,4 +100,23 @@
   50%  { transform: translateX(3px); }
   75%  { transform: translateX(-3px); }
   100% { transform: translateX(0); }
+}
+
+.profile-edit-button {
+  background-color: #ca96e2;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: none;
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.08);
+    background-color: #a862bd;
+  }
 }
