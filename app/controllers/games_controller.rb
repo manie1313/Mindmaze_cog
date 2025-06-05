@@ -38,7 +38,7 @@ class GamesController < ApplicationController
   def index
     # token_response = CognifitService.get_token(ENV['COGNIFIT_CLIENT_ID'], ENV['COGNIFIT_CLIENT_SECRET'])
     # @access_token = token_response["access_token"]
-    # @games = Game.all
+    @games = Game.all
     # @goal = Goal.find(params[:goal_id])
     @target = Target.find(params[:target_id])
     @goal = @target.goal
@@ -48,11 +48,12 @@ class GamesController < ApplicationController
   end
 
   def show
+    @games = Game.all
     @game = Game.find(params[:id])
     @performance = Performance.new
     #  @target = Target.find(params[:target_id])
     @target = current_user.targets.last
-
+    @selected_game = Game.find(params[:id])
     @access_token = CognifitService.get_token(
     ENV['COGNIFIT_CLIENT_ID'],
     ENV['COGNIFIT_CLIENT_SECRET']

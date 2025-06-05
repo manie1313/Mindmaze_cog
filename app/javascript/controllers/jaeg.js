@@ -29,7 +29,7 @@ document.addEventListener("turbo:load", function () {
   const startLink = document.getElementById("start-link");
   const scream = document.getElementById("eren-scream");
 
-  if (!startLink || !scream) return; // ← avoids the error if not present
+  if (!startLink || !scream) return;
 
   startLink.addEventListener("click", (event) => {
     event.preventDefault();
