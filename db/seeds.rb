@@ -54,6 +54,40 @@ users_data = [
   }
 ]
 
+puts "Creating targets and performances with dated entries..."
+
+User.all.each do |user|
+  Goal.all.each do |goal|
+    target = Target.create!(
+      user: user,
+      goal: goal,
+      sleep: rand(6..9)
+    )
+
+    # Create dated performances for past 6 days
+    6.times do |i|
+      day = i.days.ago.beginning_of_day
+      goal.games.each do |game|
+        Performance.create!(
+          target: target,
+          game: game,
+          description: "Seeded performance for #{user.username} on #{game.name}",
+          accuracy: rand(0.5..1.0).round(2),
+          score: rand(100..1000),
+          time: rand(10.0..120.0).round(2),
+          completed: [true, false].sample,
+          created_at: day,
+          updated_at: day
+        )
+      end
+    end
+  end
+end
+
+puts "#{Performance.count} performances seeded across 6 days."
+
+
+
 users_data.each do |data|
   puts data[:username]
   file = URI.parse(data[:avatar_url]).open
