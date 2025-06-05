@@ -80,6 +80,10 @@ GameManager.prototype.actuate = function () {
   if (this.storageManager.getBestScore() < this.score) {
     this.storageManager.setBestScore(this.score);
   }
+  if (window.parent) {
+    window.parent.postMessage({ type: "bestScore", value: this.storageManager.getBestScore() }, "*");
+    console.log("Working")
+  }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
@@ -165,10 +169,12 @@ GameManager.prototype.move = function (direction) {
 
           // Update the score
           self.score += merged.value;
+
           if (window.parent) {
-            window.parent.postMessage({ type: "score", value: self.score }, "*");
-            console.log("Working")
+            window.parent.postMessage({ type: "lastScore", value: self.score }, "*");
+            console.log("last score")
           }
+
           // The mighty 2048 tile
           if (merged.value === 2048) self.won = true;
         } else {
