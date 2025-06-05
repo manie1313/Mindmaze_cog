@@ -10,12 +10,14 @@
 
 <% if @game.embed_link.present? && @game.embed_link.include?("cognifit") %>
 
-  <div id="cogniFitContent" class="mx-auto" style="height: 600px;"></div>
+  <div id="cogniFitContent" class="mx-auto" style="height: 600px;">
+  </div>
   <button id="launch-game-button" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
     Launch Game
   </button>
 
-  <script src="https://js.cognifit.com/2025-05-30_1011_witchking/html5Loader.js"></script>
+  <script src="https://js.cognifit.com/2025-05-30_1011_witchking/html5Loader.js">
+  </script>
   <script>
     document.getElementById("launch-game-button").addEventListener("click", function () {
       html5Loader.launchGame("<%= @game.embed_link %>", "cogniFitContent");
@@ -32,11 +34,12 @@
       <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
     </div>
 
-    <div class="container score-container" style="margin-top 20px;">
+    <%# <div class="container score-container" style="margin-top 20px;">
       <h3 class="score-container">Score: 0</h3>
       <br>
       <h4 class="best-container"></h4>
-    </div>
+    </div> %>
+
   </div>
 
   <script>
@@ -122,7 +125,12 @@
 
             <div class="mb-3">
 
-              <%= f.input :score, label: "Score", input_html: { class: "form-control", data: { "game-target": "score", "game-score-value": 0 } } %>
+              <%= f.input :score, label: "Best Score", input_html: { class: "form-control", data: { game_target: "score" } } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.input :score, label: "Last Score", input_html: { class: "form-control", data: { game_target: "lastScore" } } %>
+
             </div>
 
             <div class="mb-3">
