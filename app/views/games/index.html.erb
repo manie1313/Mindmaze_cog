@@ -30,18 +30,15 @@
 
   <div class="container mx-auto px-4">
     <% if @games.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="game-cards">
         <% @games.each do |game| %>
-          <div class="game-card-category rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
-               style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= game.image_url %>'); background-size: cover; background-position: center; height: 300px; position: relative;">
-
+          <div class="game-card-category", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= game.image_url %>'); background-size: cover; background-position: center; height: 300px; position: relative;">
             <div class="absolute bottom-4 left-0 right-0 text-center">
               <h2 class="text-white text-2xl font-semibold mb-2 my-font">
                 <%= game.name %>
               </h2>
-              
               <%# <%= link_to "Play", game_path(game), class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition" %>
-              <%= link_to "Play", target_game_path(@target, game), class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition" %>
+              <%= link_to "", target_game_path(@target, game), class: "play-btn" %>
             </div>
           </div>
         <% end %>
