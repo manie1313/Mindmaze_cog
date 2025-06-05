@@ -4,7 +4,7 @@ class Performance < ApplicationRecord
 
   # validates :description, length: { in: 10..100 }
   validates :description, presence: true
-  validates :accuracy,  numericality: { only_integer: true }
+  validates :accuracy,  presence: true
   validates :completed, inclusion: [true, false]
   validates :score, presence: true
 end
