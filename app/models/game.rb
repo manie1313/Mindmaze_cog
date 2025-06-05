@@ -10,6 +10,12 @@ class Game < ApplicationRecord
   validates :embed_link, presence: true
   validates :description, presence: true
 
+  DEFAULT_IMAGE = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.creativefabrica.com%2Fwp-content%2Fuploads%2F2023%2F07%2F04%2FCute-Brain-Exercising-With-A-Dumbell-73676685-1.png&f=1&nofb=1&ipt=ff6f538e85762a637be56b340357a551d156575e8d309a3daad726163fea7db8"
+
+  def display_image
+    image_url.presence || DEFAULT_IMAGE
+  end
+
   def content
     if super.blank?
       set_content
