@@ -46,77 +46,95 @@
           <h4 class="best-container"></h4>
         </div> %>
 
+
+<!--       </div> -->
+
+  <script>
+    window.addEventListener("message", function(event) {
+      console.log("Message received:", event);
+      // const ol = document.getElementById("score-list");
+      // const score = event.data.value;
+      // console.log(ol.children);
+      // const existingScoresArray = Array.from(ol.children)
+      // const existingScores = existingScoresArray.map(child => Number.parseInt(child.textContent))
+      // console.log(existingScores);
+      // console.log(score);
+      // const scores = [...existingScores, score]
+      // const sortedScores = scores.sort((a, b) => Number(b) - Number(a));
+      // console.log(sortedScores)
+      // const newScores = sortedScores.map(score => {
+      //   return `<li>${score}</li>`
+      // }).slice(0, 5).join("");
+      // console.log(newScores)
+      // ol.innerHTML = newScores
+      // For testing only: skip origin check
+      if (event.data.type === "score") {
+        document.getElementById("score-display").textContent = "Score: " + event.data.value;
+      }
+    });
+
+    
+// const highScores = []
+// highScores.sort();
+
+// if (score > highScores.findLast) {
+//   high_scores.findLast = score;
+//   highScores.sort;
+// }
+
+
+
+  </script>
+<% else %>
+  <p class="text-red-600 font-semibold">No playable version available for this game.</p>
+<% end %>
+
+
+<%# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX %>
+<%# <% url = @game.embed_link %>
+
+ <%# <div class="container game-container d-flex" data-controller="game">
+    <div class="game-box">
+      <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>
+      <%# </iframe> %>
+    <%# </div>
+
+    <div class="container score-container" style="margin-top 20px;">
+      <h3 class="score-container">Score: 0</h3>
+      <br> %>
+      <%# <h4 class="best-container"></h4> %>
+
+    <%# </div>
+  </div> %>
+
+
+<div class="position-relative" style="min-height: 10vh;">
+  <div class="fixed-bottom d-flex p-3 ps-2">
+    <button type="button" class="btn btn-primary" style="margin-left: 50px;" data-bs-toggle="modal" data-bs-target="#performanceModal" id="games-submit-performance">
+      Log My Performance
+    </button>
+  </div>
+</div>
+
+<div class="modal fade" id="performanceModal" tabindex="-1" aria-labelledby="performanceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content rounded-2xl shadow-lg">
+      <div class="modal-header">
+        <h5 class="modal-title text-xl font-bold" id="performanceModalLabel">Record Performance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <script>
-        window.addEventListener("message", function(event) {
-          console.log("Message received:", event);
-          // const ol = document.getElementById("score-list");
-          // const score = event.data.value;
-          // console.log(ol.children);
-          // const existingScoresArray = Array.from(ol.children)
-          // const existingScores = existingScoresArray.map(child => Number.parseInt(child.textContent))
-          // console.log(existingScores);
-          // console.log(score);
-          // const scores = [...existingScores, score]
-          // const sortedScores = scores.sort((a, b) => Number(b) - Number(a));
-          // console.log(sortedScores)
-          // const newScores = sortedScores.map(score => {
-          //   return `<li>${score}</li>`
-          // }).slice(0, 5).join("");
-          // console.log(newScores)
-          // ol.innerHTML = newScores
-          // For testing only: skip origin check
-          if (event.data.type === "score") {
-            document.getElementById("score-display").textContent = "Score: " + event.data.value;
-          }
-        });
+      <div class="modal-body">
+        <div class="centered-form-wrapper">
+          <div class="form-container" data-controller="game">
 
-        // const highScores = []
-        // highScores.sort();
-
-        // if (score > highScores.findLast) {
-        //   high_scores.findLast = score;
-        //   highScores.sort;
-        // }
-      </script>
-    <% else %>
-      <p class="text-red-600 font-semibold">No playable version available for this game.</p>
-    <% end %>
-
-    <%# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX %>
-    <%# <% url = @game.embed_link %>
-
-    <%# <div class="container game-container d-flex" data-controller="game">
-        <div class="game-box">
-          <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>
-          <%# </iframe> %>
-        <%# </div>
-
-        <div class="container score-container" style="margin-top 20px;">
-          <h3 class="score-container">Score: 0</h3>
-          <br> %>
-          <%# <h4 class="best-container"></h4> %>
-
-        <%# </div>
-      </div> %>
-  </div>
-
-  <div class="modal fade" id="performanceModal" tabindex="-1" aria-labelledby="performanceModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content rounded-2xl shadow-lg">
-        <div class="modal-header">
-          <h5 class="modal-title text-xl font-bold" id="performanceModalLabel">Record Performance</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body">
-          <div class="form-wrapper" data-controller="game">
             <%= simple_form_for([@target, @performance]) do |f| %>
               <%= f.hidden_field :game_id, value: @game.id %>
 
               <div class="mb-3">
-                <%= f.input :description, label: "Game Description", input_html: { class: "form-control", value: @game.content}  %>
+
+                <%= f.input :description, label: "Game Description", input_html: { class: "form-control"}, placeholder: "My notes..."  %>
+
               </div>
 
               <div class="mb-3">
@@ -129,9 +147,9 @@
 
               </div>
 
-              <div class="mb-3">
-                <%= f.input :accuracy, label: "Accuracy (%)", input_html: { class: "form-control" } %>
-              </div>
+            <div class="mb-3">
+              <%= f.input :accuracy, label: "Accuracy (%)", input_html: { class: "form-control", data: { game_target: "percentage" } } %>
+            </div>
 
               <div class="mb-3">
                 <%= f.input :time, label: "Time Spent (minutes)", input_html: { class: "form-control" } %>
@@ -142,8 +160,10 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <%= f.button :submit, "Submit Performance", class: "btn btn-primary" %>
+
+                <button type="button" class="cancel-button" data-bs-dismiss="modal">Cancel</button>
+                <%= f.button :submit, "Submit Performance", class: "form-submit-button1" %>
+
               </div>
             <% end %>
           </div>
