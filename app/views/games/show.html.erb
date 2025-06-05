@@ -1,158 +1,152 @@
-<div class="container d-flex justify-content-center flex-column">
-  <div style="background-image "id="home-bg">
-  </div>
-
+<div class="container d-flex justify-content-center m-4">
+  <div style="background-image "id="home-bg"></div>
+  <div class="d-flex flex-column align-self-center rounded p-3">
+    <h1 class="my-font text-4xl font-bold mb-6">Play <%= @game.name %></h1>
 
     <p class="mt-4">
       <%= @game.content %>
     </p>
 
-<%# TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT %>
-<h1 class="my-font text-4xl font-bold mb-6">Play <%= @game.name %></h1>
-
-<% if @game.embed_link.present? && @game.embed_link.include?("cognifit") %>
-
-  <div id="cogniFitContent" class="mx-auto" style="height: 600px;">
-  </div>
-  <button id="launch-game-button" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
-    Launch Game
-  </button>
-
-  <script src="https://js.cognifit.com/2025-05-30_1011_witchking/html5Loader.js">
-  </script>
-  <script>
-    document.getElementById("launch-game-button").addEventListener("click", function () {
-      html5Loader.launchGame("<%= @game.embed_link %>", "cogniFitContent");
-    });
-  </script>
-
-<% elsif @game.embed_link.present? %>
-<%# GITHUB GAMES %>
-  <% url = @game.embed_link %>
-
-  <div class="container game-container d-flex" data-controller="game">
-
-    <div class="game-box">
-      <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
-    </div>
-
-    <%# <div class="container score-container" style="margin-top 20px;">
-      <h3 class="score-container">Score: 0</h3>
-      <br>
-      <h4 class="best-container"></h4>
-    </div> %>
+    <button type="button" class="form-submit-button2 w-100" data-bs-toggle="modal" data-bs-target="#performanceModal">Submit Game Performance</button>
 
   </div>
 
-  <script>
-    window.addEventListener("message", function(event) {
-      console.log("Message received:", event);
-      // const ol = document.getElementById("score-list");
-      // const score = event.data.value;
-      // console.log(ol.children);
-      // const existingScoresArray = Array.from(ol.children)
-      // const existingScores = existingScoresArray.map(child => Number.parseInt(child.textContent))
-      // console.log(existingScores);
-      // console.log(score);
-      // const scores = [...existingScores, score]
-      // const sortedScores = scores.sort((a, b) => Number(b) - Number(a));
-      // console.log(sortedScores)
-      // const newScores = sortedScores.map(score => {
-      //   return `<li>${score}</li>`
-      // }).slice(0, 5).join("");
-      // console.log(newScores)
-      // ol.innerHTML = newScores
-      // For testing only: skip origin check
-      if (event.data.type === "score") {
-        document.getElementById("score-display").textContent = "Score: " + event.data.value;
-      }
-    });
+  <%# TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT %>
 
-// const highScores = []
-// highScores.sort();
+  <div>
+    <% if @game.embed_link.present? && @game.embed_link.include?("cognifit") %>
 
-// if (score > highScores.findLast) {
-//   high_scores.findLast = score;
-//   highScores.sort;
-// }
+      <div id="cogniFitContent" class="mx-auto" style="height: 600px;">
+      </div>
+      <button id="launch-game-button" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+        Launch Game
+      </button>
 
+      <script src="https://js.cognifit.com/2025-05-30_1011_witchking/html5Loader.js">
+      </script>
+      <script>
+        document.getElementById("launch-game-button").addEventListener("click", function () {
+          html5Loader.launchGame("<%= @game.embed_link %>", "cogniFitContent");
+        });
+      </script>
 
+    <% elsif @game.embed_link.present? %>
+    <%# GITHUB GAMES %>
+      <% url = @game.embed_link %>
 
-  </script>
-<% else %>
-  <p class="text-red-600 font-semibold">No playable version available for this game.</p>
-<% end %>
+      <div class="container game-container d-flex" data-controller="game">
 
+        <div class="game-box">
+          <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
+        </div>
 
-<%# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX %>
-<%# <% url = @game.embed_link %>
+        <%# <div class="container score-container" style="margin-top 20px;">
+          <h3 class="score-container">Score: 0</h3>
+          <br>
+          <h4 class="best-container"></h4>
+        </div> %>
 
- <%# <div class="container game-container d-flex" data-controller="game">
-    <div class="game-box">
-      <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>
-      <%# </iframe> %>
-    <%# </div>
-
-    <div class="container score-container" style="margin-top 20px;">
-      <h3 class="score-container">Score: 0</h3>
-      <br> %>
-      <%# <h4 class="best-container"></h4> %>
-
-    <%# </div>
-  </div> %>
-
-
-
-
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#performanceModal">
-    Submit Game Performance
-  </button>
-</div>
-
-<div class="modal fade" id="performanceModal" tabindex="-1" aria-labelledby="performanceModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content rounded-2xl shadow-lg">
-      <div class="modal-header">
-        <h5 class="modal-title text-xl font-bold" id="performanceModalLabel">Record Performance</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body">
-        <div class="form-wrapper" data-controller="game">
-          <%= simple_form_for([@target, @performance]) do |f| %>
-            <%= f.hidden_field :game_id, value: @game.id %>
+      <script>
+        window.addEventListener("message", function(event) {
+          console.log("Message received:", event);
+          // const ol = document.getElementById("score-list");
+          // const score = event.data.value;
+          // console.log(ol.children);
+          // const existingScoresArray = Array.from(ol.children)
+          // const existingScores = existingScoresArray.map(child => Number.parseInt(child.textContent))
+          // console.log(existingScores);
+          // console.log(score);
+          // const scores = [...existingScores, score]
+          // const sortedScores = scores.sort((a, b) => Number(b) - Number(a));
+          // console.log(sortedScores)
+          // const newScores = sortedScores.map(score => {
+          //   return `<li>${score}</li>`
+          // }).slice(0, 5).join("");
+          // console.log(newScores)
+          // ol.innerHTML = newScores
+          // For testing only: skip origin check
+          if (event.data.type === "score") {
+            document.getElementById("score-display").textContent = "Score: " + event.data.value;
+          }
+        });
 
-            <div class="mb-3">
-              <%= f.input :description, label: "Game Description", input_html: { class: "form-control", value: @game.content}  %>
-            </div>
+        // const highScores = []
+        // highScores.sort();
 
-            <div class="mb-3">
+        // if (score > highScores.findLast) {
+        //   high_scores.findLast = score;
+        //   highScores.sort;
+        // }
+      </script>
+    <% else %>
+      <p class="text-red-600 font-semibold">No playable version available for this game.</p>
+    <% end %>
 
-              <%= f.input :score, label: "Best Score", input_html: { class: "form-control", data: { game_target: "score" } } %>
-            </div>
+    <%# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX %>
+    <%# <% url = @game.embed_link %>
 
-            <div class="mb-3">
-              <%= f.input :score, label: "Last Score", input_html: { class: "form-control", data: { game_target: "lastScore" } } %>
+    <%# <div class="container game-container d-flex" data-controller="game">
+        <div class="game-box">
+          <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>
+          <%# </iframe> %>
+        <%# </div>
 
-            </div>
+        <div class="container score-container" style="margin-top 20px;">
+          <h3 class="score-container">Score: 0</h3>
+          <br> %>
+          <%# <h4 class="best-container"></h4> %>
 
-            <div class="mb-3">
-              <%= f.input :accuracy, label: "Accuracy (%)", input_html: { class: "form-control" } %>
-            </div>
+        <%# </div>
+      </div> %>
+  </div>
 
-            <div class="mb-3">
-              <%= f.input :time, label: "Time Spent (minutes)", input_html: { class: "form-control" } %>
-            </div>
+  <div class="modal fade" id="performanceModal" tabindex="-1" aria-labelledby="performanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content rounded-2xl shadow-lg">
+        <div class="modal-header">
+          <h5 class="modal-title text-xl font-bold" id="performanceModalLabel">Record Performance</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
-            <div class="mb-3">
-              <%= f.input :completed, as: :boolean, label: "Completed?", input_html: { class: "form-check-input" } %>
-            </div>
+        <div class="modal-body">
+          <div class="form-wrapper" data-controller="game">
+            <%= simple_form_for([@target, @performance]) do |f| %>
+              <%= f.hidden_field :game_id, value: @game.id %>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <%= f.button :submit, "Submit Performance", class: "btn btn-primary" %>
-            </div>
-          <% end %>
+              <div class="mb-3">
+                <%= f.input :description, label: "Game Description", input_html: { class: "form-control", value: @game.content}  %>
+              </div>
+
+              <div class="mb-3">
+
+                <%= f.input :score, label: "Best Score", input_html: { class: "form-control", data: { game_target: "score" } } %>
+              </div>
+
+              <div class="mb-3">
+                <%= f.input :score, label: "Last Score", input_html: { class: "form-control", data: { game_target: "lastScore" } } %>
+
+              </div>
+
+              <div class="mb-3">
+                <%= f.input :accuracy, label: "Accuracy (%)", input_html: { class: "form-control" } %>
+              </div>
+
+              <div class="mb-3">
+                <%= f.input :time, label: "Time Spent (minutes)", input_html: { class: "form-control" } %>
+              </div>
+
+              <div class="mb-3">
+                <%= f.input :completed, as: :boolean, label: "Completed?", input_html: { class: "form-check-input" } %>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <%= f.button :submit, "Submit Performance", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
