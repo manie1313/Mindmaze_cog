@@ -27,6 +27,7 @@
   <% url = @game.embed_link %>
 
   <div class="container game-container d-flex" data-controller="game">
+
     <div class="game-box">
       <iframe class="game-frame" sandbox="allow-scripts allow-same-origin allow-forms" width="700" height="700" frameborder="0" src="<%= url %>"></iframe>
     </div>
@@ -111,12 +112,17 @@
       </div>
 
       <div class="modal-body">
-        <div class="form-wrapper">
+        <div class="form-wrapper" data-controller="game">
           <%= simple_form_for([@target, @performance]) do |f| %>
             <%= f.hidden_field :game_id, value: @game.id %>
 
             <div class="mb-3">
-              <%= f.input :description, label: "Game Description", input_html: { class: "form-control" } %>
+              <%= f.input :description, label: "Game Description", input_html: { class: "form-control", value: @game.content}  %>
+            </div>
+
+            <div class="mb-3">
+
+              <%= f.input :score, label: "Score", input_html: { class: "form-control", data: { "game-target": "score", "game-score-value": 0 } } %>
             </div>
 
             <div class="mb-3">
