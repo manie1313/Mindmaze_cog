@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   end
 
   get "my_profile", to: "profiles#my_profile"
+  get "/users/search", to: "users#search"
+  resources :profiles, only: [:show], param: :username
 end
