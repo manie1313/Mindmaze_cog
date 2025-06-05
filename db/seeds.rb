@@ -7,7 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
+require 'httparty'
+require "json"
 require "open-uri"
 
 User.destroy_all
@@ -104,6 +105,42 @@ Game.create!(
   image_url: "https://res.cloudinary.com/dtyuldook/image/upload/v1748864737/LYnyOCfAUobaPRm262hjhvNg9eE14sPj5H6CFiUxjktt7R0QZX5kLbE7LDEgxm6brwg_ci1jbn.png",
   goal: goal3
 )
+
+
+puts "Fetching Cognifit games..."
+
+url = "https://api.cognifit.com/programs/tasks"
+response = HTTParty.get(url, query: {
+  client_id: ENV['COGNIFIT_CLIENT_ID'],
+  locales: ['en'],
+  category: 'COGNITIVE'
+})
+
+if response.success?
+  games = response.parsed_response.first(20)
+  all_goals = Goal.all
+
+  games.each do |game_data|
+    Game.create!(
+      mode: "Single player",
+      name: game_data.dig("assets", "titles", "en") || game_data["key"],
+      category: "Cognitive",
+      description: game_data.dig("assets", "descriptions", "en") || "CogniFit Game",
+      embed_link: game_data["key"],
+      image_url: game_data.dig("assets", "images", "icon") || "",
+      goal: all_goals.sample,
+    )
+  end
+
+  puts "Seeded 3 Cognifit games."
+else
+  puts "Failed to fetch Cognifit games: #{response.code}"
+end
+
+
+
+
+
 puts "#{Game.count} games - #{Goal.count} goals"
 
 # seeding targets
