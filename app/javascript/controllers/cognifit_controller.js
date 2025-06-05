@@ -1,54 +1,54 @@
-// import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus"
 
-// export default class extends Controller {
-//   static targets = ["container"]
+export default class extends Controller {
+  static targets = ["container"]
 
-//   connect() {
-//     console.log("✅ Stimulus Cognifit controller connected");
-//   }
+  connect() {
+    console.log("✅ Stimulus Cognifit controller connected");
+  }
 
-//   launch() {
-//     const clientId = this.element.dataset.clientId
-//     const accessToken = this.element.dataset.accessToken
+  launch() {
+    const clientId = this.element.dataset.clientId
+    const accessToken = this.element.dataset.accessToken
 
-//     if (!window.CognifitSdk || !window.CognifitSdk.CognifitSdk) {
-//       console.error("CogniFit SDK not loaded. Make sure the script tag is in your layout.")
-//       return
-//     }
+    if (!window.CognifitSdk || !window.CognifitSdk.CognifitSdk) {
+      console.error("CogniFit SDK not loaded. Make sure the script tag is in your layout.")
+      return
+    }
 
-//     const sdk = new window.CognifitSdk.CognifitSdk({
-//       containerId: this.containerTarget.id,
-//       clientId,
-//       cognifitUserAccessToken: accessToken,
-//       sandbox: true,
-//       appType: "web",
-//       theme: "light",
-//       showResults: true,
-//       isFullscreenEnabled: true,
-//       listenEvents: true,
-//       scale: 100
-//     })
+    const sdk = new window.CognifitSdk.CognifitSdk({
+      containerId: this.containerTarget.id,
+      clientId,
+      cognifitUserAccessToken: accessToken,
+      sandbox: false,
+      appType: "web",
+      theme: "light",
+      showResults: true,
+      isFullscreenEnabled: true,
+      listenEvents: true,
+      scale: 100
+    })
 
-//     sdk.init()
-//       .then(() => {
-//         sdk.start("GAME", "BEE_BALLOON").subscribe({
-//           next: (response) => {
-//             if (response.isSessionCompleted()) {
-//               console.log("🎉 Game completed!")
-//             } else if (response.isSessionAborted()) {
-//               console.log("⚠️ Game aborted.")
-//             }
-//           },
-//           error: (err) => {
-//             console.error("❌ Session error:", err)
-//           }
-//         })
-//       })
-//       .catch((err) => {
-//         console.error("❌ SDK init failed:", err)
-//       })
-//   }
-// }
+    sdk.init()
+      .then(() => {
+        sdk.start("GAME", "BEE_BALLOON").subscribe({
+          next: (response) => {
+            if (response.isSessionCompleted()) {
+              console.log("🎉 Game completed!")
+            } else if (response.isSessionAborted()) {
+              console.log(" Game aborted.")
+            }
+          },
+          error: (err) => {
+            console.error(" Session error:", err)
+          }
+        })
+      })
+      .catch((err) => {
+        console.error(" SDK init failed:", err)
+      })
+  }
+}
 
 // KEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEP
 // import { Controller } from "@hotwired/stimulus"
@@ -57,7 +57,7 @@
 //   static targets = ["container"]
 
 //   connect() {
-//     console.log("✅ Stimulus Cognifit controller connected")
+//     console.log(" Stimulus Cognifit controller connected")
 //   }
 
 //   launch() {
@@ -65,7 +65,7 @@
 //     const accessToken = this.element.dataset.cognifitAccessToken
 
 //     if (!window.CognifitSdk || !window.CognifitSdk.CognifitSdk) {
-//       console.error("❌ CogniFit SDK not loaded. Ensure the script tag is in your layout.")
+//       console.error("CogniFit SDK not loaded. Ensure the script tag is in your layout.")
 //       return
 //     }
 
@@ -73,7 +73,7 @@
 //       containerId: this.containerTarget.id,
 //       clientId,
 //       cognifitUserAccessToken: accessToken,
-//       sandbox: true, // ✅ Works now!
+//       sandbox: true,
 //       appType: "web",
 //       theme: "light",
 //       showResults: true,
