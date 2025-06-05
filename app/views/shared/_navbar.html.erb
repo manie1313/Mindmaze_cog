@@ -77,10 +77,9 @@
             </li>
           </ul>
         <% end %>
-        <form data-controller="user-search" data-action="input->user-search#search keydown->user-search#handleKeydown" class="d-flex mt-3" role="search" onsubmit="return false;">
+        <form data-controller="user-search" data-action="input->user-search#search" class="d-flex mt-3" role="search" onsubmit="return false;">
           <input
             data-user-search-target="input"
-            data-action="input->user_search#handleKeydown"
             class="form-control me-2"
             type="search"
             placeholder="Search users..."
