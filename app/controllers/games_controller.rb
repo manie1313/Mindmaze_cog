@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :set_target
   # def index
   #   case @target.goal
   #   when "Improve focus"
@@ -56,5 +57,11 @@ class GamesController < ApplicationController
     ENV['COGNIFIT_CLIENT_ID'],
     ENV['COGNIFIT_CLIENT_SECRET']
   )["access_token"]
+  end
+
+  private
+
+  def set_target
+    @target = Target.find(params[:target_id])
   end
 end

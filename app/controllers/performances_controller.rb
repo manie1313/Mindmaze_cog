@@ -36,6 +36,6 @@ class PerformancesController < ApplicationController
   end
 
   def performance_params
-    params.require(:performance).permit(:description, :accuracy, :time, :completed, :game_id)
+    params.require(:performance).permit(:description, :accuracy, :score, :time, :completed, :game_id)
   end
 end
