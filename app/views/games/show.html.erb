@@ -66,7 +66,7 @@
       }
     });
 
-    
+
 // const highScores = []
 // highScores.sort();
 
@@ -120,40 +120,7 @@
       <div class="modal-body">
         <div class="centered-form-wrapper">
           <div class="form-container" data-controller="game">
-            <%= simple_form_for([@target, @performance]) do |f| %>
-              <%= f.hidden_field :game_id, value: @game.id %>
-
-              <div class="mb-3">
-                <%= f.input :description, label: "Game Description", input_html: { class: "form-control"}, placeholder: "My notes..."  %>
-              </div>
-
-              <div class="mb-3">
-
-                <%= f.input :score, label: "Best Score", input_html: { class: "form-control", data: { game_target: "score" } } %>
-              </div>
-
-              <div class="mb-3">
-                <%= f.input :score, label: "Last Score", input_html: { class: "form-control", data: { game_target: "lastScore" } } %>
-
-              </div>
-
-            <div class="mb-3">
-              <%= f.input :accuracy, label: "Accuracy (%)", input_html: { class: "form-control", data: { game_target: "percentage" } } %>
-            </div>
-
-              <div class="mb-3">
-                <%= f.input :time, label: "Time Spent (minutes)", input_html: { class: "form-control" } %>
-              </div>
-
-              <div class="mb-3">
-                <%= f.input :completed, as: :boolean, label: "Completed?", input_html: { class: "form-check-input" } %>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="cancel-button" data-bs-dismiss="modal">Cancel</button>
-                <%= f.button :submit, "Submit Performance", class: "form-submit-button1" %>
-              </div>
-            <% end %>
+            <%= render "performances/form", target: @target, performance: @performance, game: @game %>
           </div>
         </div>
       </div>
