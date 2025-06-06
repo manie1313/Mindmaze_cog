@@ -142,31 +142,29 @@ Game.create!(
 
 
 puts "Fetching Cognifit games..."
-
 url = "https://api.cognifit.com/programs/tasks"
 response = HTTParty.get(url, query: {
   client_id: ENV['COGNIFIT_CLIENT_ID'],
   locales: ['en'],
   category: 'COGNITIVE'
 })
-
 if response.success?
   games = response.parsed_response.first(20)
   all_goals = Goal.all
-
   games.each do |game_data|
+    assets = game_data["assets"]
+    asset = assets.is_a?(Array) ? assets.first : assets
     Game.create!(
       mode: "Single player",
-      name: game_data.dig("assets", "titles", "en") || game_data["key"],
+      name: asset.dig("titles", "en") || game_data["key"],
       category: "Cognitive",
-      description: game_data.dig("assets", "descriptions", "en") || "CogniFit Game",
+      description: asset.dig("descriptions", "en") || "CogniFit Game",
       embed_link: game_data["key"],
-      image_url: game_data.dig("assets", "images", "icon") || "",
+      image_url: asset.dig("images", "icon") || "",
       goal: all_goals.sample,
     )
   end
-
-  puts "Seeded 3 Cognifit games."
+  puts "Seeded #{games.count} Cognifit games."
 else
   puts "Failed to fetch Cognifit games: #{response.code}"
 end
